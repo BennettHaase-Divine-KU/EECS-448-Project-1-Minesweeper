@@ -1,29 +1,34 @@
 print("Input x,y values")
 print("X =")
-x=input()
+a = input()
 print("Y= ")
-y = input()
-box(x,y) #john
+b = input()
 
-def box():
-        board = []
-        for j in range(x):
+x = int(a)
+y = int(b)
+
+# declaration and adding columns
+board = []
+for j in range(x):
         column = []
-                for i in range(y):
-                        column.append(0)
-                board.append(column)
-        # filling with data
-        for i in range(0, x): # top and bottom row
-                board[i][0] = 1
-                board[i][y-1] = 1
-        for j in range(0, y): # first and last column
-                board[0][j] = 1
-                board[x-1][j] = 1
-        cols = len(board)
-        rows = 0
-        if cols:
-                rows = len(board[0])
-        for j in range(rows):
-                for i in range(cols):
-                        print(board[i][j], end = "")
-                        print()
+        for i in range(y):
+                column.append(0)
+        board.append(column)
+        
+# filling with data
+for i in range(0, x): # top and bottom row
+     board[i][0] = 1
+     board[i][y-1] = 1
+
+for j in range(0, y): # first and last column
+    board[0][j] = 1
+    board[x-1][j] = 1
+
+cols = len(board)
+rows = 0
+if cols:
+        rows = len(board[0])
+for j in range(rows):
+        for i in range(cols):
+                print(board[i][j], end = " ")
+        print()
