@@ -3,7 +3,7 @@ print("X =")
 x=input()
 print("Y= ")
 y = input()
-box(x,y)
+box(x,y) #john
 
 def box():
         board = []
