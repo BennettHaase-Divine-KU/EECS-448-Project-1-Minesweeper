@@ -1,4 +1,5 @@
 import random
+print("Welcome to Pysweeper!")
 print("Input Board Attributes :)")
 print("Width = ")
 w = input()
@@ -6,12 +7,17 @@ print("Height = ")
 h = input()
 print("Number of Bombs =")
 b = input()
+while int(b)>(int(w)*int(h))-1:
+    print("Error enter a valid number of Bombs.")
+    b = input()
+
+print()
 
 x = int(w)+2
 y = int(h)+2
 z = int(b)
 
-# declaration and adding columns
+# Declaration of board and adding row/columns
 board = []
 for j in range(x):
     column = []
@@ -19,7 +25,7 @@ for j in range(x):
         column.append(0)
     board.append(column)
 
-# filling with data
+# Filling with data (Creating a Border)
 for i in range(0, x):  # top and bottom row
     board[i][0] = "B"
     board[i][y-1] = "B"
@@ -47,12 +53,12 @@ while n<z:
         board[e][f] = "X"
         n = n + 1
 
-#print()
+print()
 
-#rows = 0
-#if cols:
-#    rows = len(board[0])
-#for j in range(rows):
-#    for i in range(cols):
-#        print(board[i][j], end=" ")
-#    print()
+rows = 0
+if cols:
+    rows = len(board[0])
+for j in range(rows):
+    for i in range(cols):
+        print(board[i][j], end=" ")
+    print()
