@@ -15,15 +15,6 @@ class Cla1:
                 column.append(0)
             self.board.append(column)
 
-        # Filling with data (Creating a Border)
-        for i in range(0, x):  # top and bottom row
-            self.board[i][0] = "B"
-            self.board[i][y-1] = "B"
-
-        for j in range(0, y):  # first and last column
-            self.board[0][j] = "B"
-            self.board[x-1][j] = "B"
-
         return
 
 
@@ -43,8 +34,8 @@ class Cla1:
     def place_bomb(self, z):
         n=0
         while n<z:
-            e = random.randint(1, x-2)
-            f = random.randint(1, y-2)
+            e = random.randint(0, x-1)
+            f = random.randint(0, y-1)
             if(self.board[e][f] == "X"):
                 n = n
             else:
@@ -68,8 +59,8 @@ while int(b)>(int(w)*int(h))-1:
 
 print()
 
-x = int(w)+2  # Width
-y = int(h)+2  # Height
+x = int(w)  # Width
+y = int(h)  # Height
 z = int(b)  # Number of bombs
 
 
