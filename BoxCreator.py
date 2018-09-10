@@ -66,7 +66,7 @@ z = int(b)  # Number of bombs
 
 cla1 = Cla1()
 cla1.make_board(x, y, z)
-cla1.print_board()
+#cla1.print_board()
 cla1.place_bomb(z)
 print()
 cla1.print_board()
