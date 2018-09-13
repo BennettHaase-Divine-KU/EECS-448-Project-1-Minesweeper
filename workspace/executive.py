@@ -31,12 +31,13 @@ class executive:
         self.setUpBoard()
         self.gameBoard.print_board_true()
         self.gameBoard.place_bomb()
-
+        self.gameBoard.setAdjBomb()
 
         self.gameState=0 #gameState 0->unresolved, 1->Win, 2->Loose
         while self.gameState==0:
             self.gameBoard.print_board_true()
             self.gameBoard.print_board()
+
 
             #Main Game Loop
             print("Select a spot to reveal")
