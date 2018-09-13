@@ -38,10 +38,11 @@ column = (screen_width // 20)
 # game logic grid
 gamelogic = [[0] * row for i in range(column)]
 grid = [[0] * row for i in range(column)]
-
+bomb = pygame.image.load("bomb.png")
 # TODO: Set the clock rate to a specific FPS
 
 while not program_end:
+    # TODO: Click will reveal the tile
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             program_end = True
@@ -49,10 +50,10 @@ while not program_end:
             pos = pygame.mouse.get_pos()
             c = pos[0] // (WIDTH + MARGIN)
             r = pos[1] // (HEIGHT + MARGIN)
-            gamelogic[c][r] = 1
+            gamelogic[c][r] = 9
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
-
+    #TODO: add in cases for flagging, bombs, 1-4
     for i in range(row):
         for j in range(column):
             color = GREY
@@ -66,6 +67,13 @@ while not program_end:
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
                 screen.blit(font.render("1", True, BLACK), (grid[j][i]))
+            if gamelogic[j][i] == 9:
+                color = WHITE
+                temp = grid[j][i].move(-5,-5)
+                grid[j][i] = pygame.draw.rect(screen, color,
+                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
+                                               HEIGHT])
+                screen.blit(bomb,temp)
     pygame.display.flip()
 
 pygame.quit()
