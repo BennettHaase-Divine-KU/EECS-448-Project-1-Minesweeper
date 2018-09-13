@@ -45,6 +45,7 @@ column = int(h)
 # game logic grid
 grid = [[0] * row for i in range(column)]
 bomb = pygame.image.load("bomb.png")
+flag = pygame.image.load("flag.png")
 # TODO: Set the clock rate to a specific FPS
 
 while not program_end:
@@ -56,7 +57,7 @@ while not program_end:
             pos = pygame.mouse.get_pos()
             c = pos[0] // (WIDTH + MARGIN)
             r = pos[1] // (HEIGHT + MARGIN)
-            board[c][r].adjBomb = 2
+            board[c][r].isVisible = True
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
     #TODO: add in cases for flagging, bombs, 1-8
@@ -83,6 +84,8 @@ while not program_end:
             if board[j][i].adjBomb >  0:
                 temp = grid[j][i].move(5,5)
                 screen.blit(font.render(str(board[j][i].adjBomb), True, BLACK), (temp))
+            if board[j][i].isFlagged == True:
+                screen.blit(flag,grid[j][i])
 
 
     pygame.display.flip()
