@@ -139,11 +139,11 @@ class Board:
 
             if 0 <= posx-1 < self.width and 0 <= posy-1 < self.length:
                 self.board[posx][posy].isVisible = True
-                self.reveal_tile(posx - 1, posy)
+                self.reveal_tile(posx - 1, posy - 1)
 
             if 0 <= posx-1 < self.width and 0 <= posy+1 < self.length:
                 self.board[posx][posy].isVisible = True
-                self.reveal_tile(posx - 1, posy - 1)
+                self.reveal_tile(posx - 1, posy + 1)
 
             if 0 <= posx+1<self.width and 0 <= posy-1 < self.length:
                 self.board[posx][posy].isVisible = True
