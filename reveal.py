@@ -1,8 +1,7 @@
-import random
+mport random
 
 
 class Cla1:
-
 
     def make_board(self, x, y, z):  # c = x (width) d = y (height) e = z (num bombs)
         global board
@@ -15,7 +14,6 @@ class Cla1:
             board.append(column)
         return
 
-
     def print_board(self):
         cols = len(board)
         rows = 0
@@ -27,45 +25,66 @@ class Cla1:
             print()
         return board
 
-
     def place_bomb(self, z):
         n=0
         while n<z:
             e = random.randint(0, x-1)
             f = random.randint(0, y-1)
-            if board[e][f] == "9":
+            if board[e][f] == "*":
                 n = n
             else:
-                board[e][f] = "9"
-                n = n + 1
+                if board[e][f] is not None:
+                    board[e][f] = "*"
+                    n = n + 1
         return board
 
+    def check_isbomb(self, posx, posy):
 
-    def check(self, posx, posy):
-        global count
-        if board[posx][posy] is not None and board[posx][posy]=="9":
-            print("Game over")
-        if board[posx-1][posy] is not None and board[posx-1][posy]=="9":
+        if board[posx][posy] == "*":
+            return True
+        else:
+            return False
+
+    def check(self, posx, posy, x, y):
+
+        if board[posx][posy] == "*":
+            y = y
+
+        if posx <= x and board[posx+1][posy] is not 'null' and board[posx+1][posy] is "*":  # right
             board[posx][posy] += 1
-        if board[posx+1][posy] is not None and board[posx+1][posy]=="9":
-            board[posx][posy] += 1
-        if board[posx][posy-1] is not None and board[posx][posy-1]=="9":
-            board[posx][posy] += 1
-        if board[posx][posy+1] is not None and board[posx][posy+1]=="9":
-            board[posx][posy] += 1
-        if board[posx-1][posy-1] is not None and board[posx-1][posy-1]=="9":
-            board[posx][posy] += 1
-        if board[posx+1][posy-1] is not None and board[posx+1][posy-1]=="9" :
-            board[posx][posy] += 1
-        if board[posx-1][posy+1] is not None and board[posx-1][posy+1]=="9":
-            board[posx][posy] += 1
-        if board[posx+1][posy+1] is not None and board[posx+1][posy+1]=="9":
+            print ("true")
+
+        if posx <= x and posy <= y and board[posx + 1][posy + 1] is "*":  # lower right
             board[posx][posy] += 1
 
+        if posy <= y and board[posx][posy + 1] is "*":  # down
+            board[posx][posy] += 1
 
-    def reveal(self, posx, posy):
-            board = cla1.check(posx, posy)
-            cla1.print_board()
+        if posx >= 1 and board[posx-1][posy] is "*":  # left
+            board[posx][posy] += 1
+
+        if posx >= 1 and posy <= y and board[posx - 1][posy + 1] is "*":  # lower left
+            board[posx][posy] += 1
+
+        if posx >= 1 and posy >= 1 and board[posx-1][posy-1] is "*":  # upper left
+            board[posx][posy] += 1
+
+        if posy >= 1 and board[posx][posy-1] is "*":  # up
+            board[posx][posy] += 1
+
+        if posx <= x and posy >= 1 and board[posx+1][posy-1] is "*":  # upper right
+            board[posx][posy] += 1
+
+    def loop_check(self, x, y):
+        l=0
+        print()
+        for j in range(x):
+            for i in range(y):
+                if cla1.check_isbomb(i, j) == False:
+                    board = cla1.check(i, j, x, y)
+                else:
+                    l=l
+
 
 
 print("Welcome to Pysweeper!")
@@ -92,7 +111,7 @@ cla1.place_bomb(z)
 print()
 cla1.print_board()
 
-
+""""
 print("Enter the position you want to reveal")
 print("X =")
 h = input()
@@ -100,5 +119,13 @@ print("Y= ")
 i = input()
 posy = int(i)
 posx = int(h)
-
-cla1.reveal(posx, posy)
+"""
+cla1.loop_check((x-1), (y-1))
+print()
+cla1.print_board()
+print()
+print("Now we can use gooey to reveal single tiles.")
+print("Logic step 1: If tile is bomb, game over, and show board(reveal all tiles)")
+print("Logic step 2-3: If tile > 0 and not bomb , reveal tile # at clicked position")
+print("Logic step 2-3: If tile = 0 and not bomb, reveal tile(s)")
+print("Logic step 4: If made it pasted logic step 1-3 then loop until user either wins or loses. Wins ->(if ALL_REVEALED= true then YOU WIN...")
