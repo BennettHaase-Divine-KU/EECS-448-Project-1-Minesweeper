@@ -1,78 +1,172 @@
 import random
-from tile import tile
 
-class Board:
 
-    def __init__(self):
-        self.board = []
+class Cla1:
 
-    #Initilises the board
     def make_board(self, x, y, z):  # c = x (width) d = y (height) e = z (num bombs)
-        # Declaration of board and adding row/columns
-        self.width=x
-        self.length=y
-        self.num_bombs=z
-
-
-        for j in range(self.width):
+        global board
+        board = []
+        # Declaration of board and adding rows/columns
+        for j in range(x):
             column = []
-            for i in range(self.length):
-                column.append(tile())
-            self.board.append(column)
-
+            for i in range(y):
+                column.append("-")
+            board.append(column)
         return
-    #Prints the board to terminal where hidden tiles are '?' and revealed tiles are either '*' or a num
-    def print_board(self):
-        cols = len(self.board)
-        rows = 0
-        if cols:
-            rows = len(self.board[0])
-        for j in range(rows):
-            for i in range(cols):
-                if(self.board[i][j].isBomb == True and self.board[i][j].isVisible==True):
-                    print("*", end=" ")
-                elif(self.board[i][j].isVisible==True):
-                    print(self.board[i][j].adjBomb, end=" ")
-                else:
-                    print("?", end=" ")
-            print()
-        print()
-        return self.board
 
-    #Initilises the bombs on the board
-    def place_bomb(self):
-        n=0
-        while n<self.num_bombs:
-            e = random.randint(0, self.width-1)
-            f = random.randint(0, self.length-1)
-            if(self.board[e][f].isBomb == True):
+    def print_board(self):
+        cols = len(board)
+        posxs = 0
+        if cols:
+            posxs = len(board[0])
+        for j in range(posxs):
+            for i in range(cols):
+                print(board[i][j], end=" ")
+            print()
+        return board
+
+    def place_bomb(self, z):
+        n = 0
+        while n < z:
+            e = random.randint(0, x-1)
+            f = random.randint(0, y-1)
+            if board[e][f] == "*":
                 n = n
             else:
-                self.board[e][f].isBomb = True
+                board[e][f] = "*"
                 n = n + 1
-        return self.board
-    #TODO set adjacent bombs on tiles
+        return board
 
-    #reveals a tile at x,y
-    def reveal_tile(self,x_pos,y_pos):
-        #TODO add recursive step to reveal tiles
-        self.board[x_pos][y_pos].isVisible=True;
+    def search(self, posx, posy):
+        global count
+        count = 0
 
-    #Prints a debug version of the board to terminal
-    def print_board_true(self):
-        cols = len(self.board)
-        rows = 0
-        if cols:
-            rows = len(self.board[0])
-        for j in range(rows):
-            for i in range(cols):
-                if (self.board[i][j].isBomb == True):
-                    print("*", end=" ")
+        if 0 <= posx-1 < x and 0 <= posy < y:  # Left
+            if board[posx-1][posy] == "*":  # if the adjacent is the bomb
+                count += 1
+
+        if 0 <= posx+1 < x and 0 <= posy < y:  # Right
+            if board[posx+1][posy] == "*":
+                count += 1
+
+        if 0 <= posx < x and 0 <= posy-1 < y:  # Up
+            if board[posx][posy-1] == "*":
+                count += 1
+
+        if 0 <= posx < x and 0 <= posy+1 < y:  # Down
+            if board[posx][posy+1] == "*":
+                count += 1
+
+        if 0 <= posx-1 < x and 0 <= posy-1 < y:  # Upper Left
+            if board[posx-1][posy-1] == "*":
+                count += 1
+
+        if 0 <= posx-1 < x and 0 <= posy+1 < y:  # Lower Left
+            if board[posx-1][posy+1] == "*":
+                count += 1
+
+        if 0 <= posx+1 < x and 0 <= posy-1 < y:  # Upper Right
+            if board[posx+1][posy-1] == "*":
+                count += 1
+
+        if 0 <= posx+1 < x and 0 <= posy+1 < y:  # Lower Right
+            if board[posx+1][posy+1] == "*":
+                count += 1
+        return count
+
+    def check_isbomb(self, x, y, posx, posy):
+
+        if 0 <= posx < x and 0 <= posy < y:  # make sure is not out of bound
+            if board[posx][posy] == "*":
+                return True
+            else:
+                return False
+
+    def reveal_nums(self, x, y):
+        l = 0
+        for j in range(x):
+            for i in range(y):
+                if cla1.check_isbomb(x, y, i, j) is False:
+                    board = cla1.recursion(i, j)
                 else:
-                    print(self.board[i][j].adjBomb, end=" ")
-            print()
-        print()
-        return self.board
+                    l = l
+
+    def recursion(self, posx, posy):
+        if cla1.search(posx, posy) == 0 and board[posx][posy] == "-":
+            board[posx][posy] = "0"  # if revealing tile has 0 bomb adjacent & is unrevealed,reveal
+
+            if 0 <= posx-1 < x and 0 <= posy < y:  # make sure is in the bound
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy)  # go through it again since there is no bomb adjacent on the first tile
+
+            if 0 <= posx+1 < x and 0 <= posy < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx+1, posy)
+
+            if 0 <= posx < x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx, posy-1)
+
+            if 0 <= posx < x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx, posy+1)
+
+            if 0 <= posx-1 < x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy-1)
+
+            if 0 <= posx-1 < x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy-1)
+
+            if 0 <= posx+1 < x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx+1, posy-1)
+
+            if 0 <= posx+1 < x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx+1, posy+1)
+        else:
+            if cla1.search(posx, posy) == 0:
+                board[posx][posy] = "0"
+            else:
+                board[posx][posy] = count
+        return board
+
+"""
+print("Welcome to Pysweeper!")
+print("Input Board Attributes :)")
+print("Width = ")
+w = input()
+print("Height = ")
+h = input()
+print("Number of Bombs =")
+b = input()
+
+while int(b) > (int(w)*int(h))-1:
+    print("Error enter a valid number of Bombs.")
+    b = input()
 
 
+x = int(w)  # Width
+y = int(h)  # Height
+z = int(b)  # Number of bombs
 
+cla1 = Cla1()
+cla1.make_board(x, y, z)
+cla1.place_bomb(z)
+print()
+cla1.print_board()
+
+
+print()
+cla1.reveal_nums(x, y)
+cla1.print_board()
+
+print()
+print("Now we can use GUI to reveal single tiles.")
+print("Logic step 1: If tile is bomb, game over, and show board(reveal all tiles)")
+print("Logic step 2-3: If tile > 0 and not bomb , reveal tile # at clicked position")
+print("Logic step 2-3: If tile = 0 and not bomb, reveal tile(s)")
+print("Logic step 4: If past logic step 1-3, loop till user (Wins|Loses). Won ->(if ALL_REVEALED=true then WON)")
+"""
