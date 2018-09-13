@@ -6,7 +6,7 @@ class Cla1:
     def make_board(self, x, y, z):  # c = x (width) d = y (height) e = z (num bombs)
         global board
         board = []
-        # Declaration of board and adding posx/columns
+        # Declaration of board and adding rows/columns
         for j in range(x):
             column = []
             for i in range(y):
@@ -26,8 +26,8 @@ class Cla1:
         return board
 
     def place_bomb(self, z):
-        n=0
-        while n<z:
+        n = 0
+        while n < z:
             e = random.randint(0, x-1)
             f = random.randint(0, y-1)
             if board[e][f] == "*":
@@ -41,35 +41,35 @@ class Cla1:
         global count
         count = 0
 
-        if 0 <= posx-1 < x and 0 <= posy < y:  # make sure is not out of bound
+        if 0 <= posx-1 < x and 0 <= posy < y:  # Left
             if board[posx-1][posy] == "*":  # if the adjacent is the bomb
                 count += 1
 
-        if 0 <= posx+1 < x and 0 <= posy < y:
+        if 0 <= posx+1 < x and 0 <= posy < y:  # Right
             if board[posx+1][posy] == "*":
                 count += 1
 
-        if 0 <= posx < x and 0 <= posy-1 < y:
+        if 0 <= posx < x and 0 <= posy-1 < y:  # Up
             if board[posx][posy-1] == "*":
                 count += 1
 
-        if 0 <= posx < x and 0 <= posy+1 < y:
+        if 0 <= posx < x and 0 <= posy+1 < y:  # Down
             if board[posx][posy+1] == "*":
                 count += 1
 
-        if 0 <= posx-1 < x and 0 <= posy-1 < y:
+        if 0 <= posx-1 < x and 0 <= posy-1 < y:  # Upper Left
             if board[posx-1][posy-1] == "*":
                 count += 1
 
-        if 0 <= posx-1 < x and 0 <= posy+1 < y:
+        if 0 <= posx-1 < x and 0 <= posy+1 < y:  # Lower Left
             if board[posx-1][posy+1] == "*":
                 count += 1
 
-        if 0 <= posx+1 < x and 0 <= posy-1 < y:
+        if 0 <= posx+1 < x and 0 <= posy-1 < y:  # Upper Right
             if board[posx+1][posy-1] == "*":
                 count += 1
 
-        if 0 <= posx+1 < x and 0 <= posy+1 < y:
+        if 0 <= posx+1 < x and 0 <= posy+1 < y:  # Lower Right
             if board[posx+1][posy+1] == "*":
                 count += 1
         return count
@@ -92,8 +92,8 @@ class Cla1:
                     l = l
 
     def recursion(self, posx, posy):
-        if cla1.search(posx, posy) == 0 and board[posx][posy] == "-":  # if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
-            board[posx][posy] = "0"
+        if cla1.search(posx, posy) == 0 and board[posx][posy] == "-":
+            board[posx][posy] = "0"  # if revealing tile has 0 bomb adjacent & is unrevealed,reveal
 
             if 0 <= posx-1 < x and 0 <= posy < y:  # make sure is in the bound
                 board[posx][posy] = "0"
@@ -105,9 +105,9 @@ class Cla1:
 
             if 0 <= posx < x and 0 <= posy-1 < y:
                 board[posx][posy] = "0"
-                cla1.recursion(posx, posy-1);
+                cla1.recursion(posx, posy-1)
 
-            if 0 <= posx<x and 0 <= posy+1 < y:
+            if 0 <= posx < x and 0 <= posy+1 < y:
                 board[posx][posy] = "0"
                 cla1.recursion(posx, posy+1)
 
@@ -119,15 +119,15 @@ class Cla1:
                 board[posx][posy] = "0"
                 cla1.recursion(posx-1, posy-1)
 
-            if 0 <= posx+1<x and 0 <= posy-1 < y:
+            if 0 <= posx+1 < x and 0 <= posy-1 < y:
                 board[posx][posy] = "0"
                 cla1.recursion(posx+1, posy-1)
 
             if 0 <= posx+1 < x and 0 <= posy+1 < y:
                 board[posx][posy] = "0"
-                cla1.recursion(posx+1,posy+1)
+                cla1.recursion(posx+1, posy+1)
         else:
-            if cla1.search(posx,posy) == 0:
+            if cla1.search(posx, posy) == 0:
                 board[posx][posy] = "0"
             else:
                 board[posx][posy] = count
@@ -143,7 +143,7 @@ h = input()
 print("Number of Bombs =")
 b = input()
 
-while int(b)>(int(w)*int(h))-1:
+while int(b) > (int(w)*int(h))-1:
     print("Error enter a valid number of Bombs.")
     b = input()
 
