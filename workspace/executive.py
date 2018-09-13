@@ -8,7 +8,19 @@ class executive:
         self.bombCnt=bombCnt
 
     def checkWinLoose(self):
-        return
+        num_safe_tile=self.length*self.width-self.bombCnt
+        num_safe_revealed_tile=0
+        for j in range(self.length):
+            for i in range(self.width):
+                if(self.gameBoard.board[i][j].isBomb==True and self.gameBoard.board[i][j].isVisible==True):
+                    return 2
+                elif(self.gameBoard.board[i][j].isVisible==True):
+                    num_safe_revealed_tile=num_safe_revealed_tile+1
+        if(num_safe_revealed_tile==num_safe_tile):
+            return 1
+        else:
+            return 0
+
     def setUpBoard(self):
         self.gameBoard.make_board(self.width, self.length, self.bombCnt)
         return
@@ -33,10 +45,14 @@ class executive:
             print("y pos:")
             y=int(input())
 
-            self.gameState=self.gameBoard.reveal_tile(x,y)
+            self.gameBoard.reveal_tile(x,y)
+            self.gameState=self.checkWinLoose()
             continue
         self.gameBoard.print_board()
-        print("GAME OVER")
+        if(self.gameState==2):
+            print("YOU LOSE")
+        elif(self.gameState==1):
+            print("YOU WIN")
         return
 
 

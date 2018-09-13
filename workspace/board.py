@@ -51,14 +51,12 @@ class Board:
                 self.board[e][f].isBomb = True
                 n = n + 1
         return self.board
+    #TODO set adjacent bombs on tiles
 
     #reveals a tile at x,y
     def reveal_tile(self,x_pos,y_pos):
+        #TODO add recursive step to reveal tiles
         self.board[x_pos][y_pos].isVisible=True;
-        if(self.board[x_pos][y_pos].isBomb==True):
-            return 2
-        else:
-            return 0
 
     #Prints a debug version of the board to terminal
     def print_board_true(self):
