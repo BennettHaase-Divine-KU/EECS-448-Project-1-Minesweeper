@@ -56,7 +56,7 @@ while not program_end:
             pos = pygame.mouse.get_pos()
             c = pos[0] // (WIDTH + MARGIN)
             r = pos[1] // (HEIGHT + MARGIN)
-            board[c][r].isBomb = True
+            board[c][r].adjBomb = 2
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
     #TODO: add in cases for flagging, bombs, 1-8
@@ -80,6 +80,10 @@ while not program_end:
                                                HEIGHT])
                 temp = grid[j][i].move(-5, -5)
                 screen.blit(bomb, temp)
+            if board[j][i].adjBomb >  0:
+                temp = grid[j][i].move(5,5)
+                screen.blit(font.render(str(board[j][i].adjBomb), True, BLACK), (temp))
+
 
     pygame.display.flip()
 
