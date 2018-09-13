@@ -1,14 +1,18 @@
 # import the pygame library, all this learned from
 # http://programarcadegames.com/index.php?lang=en&chapter=array_backed_grids
+from workspace.tile import tile
 
 import pygame
 
 pygame.init()
+pygame.display.init()
+
 # definition of colors
 WHITE = (255, 255, 255)
 GREY = (211, 211, 211)
 BLACK = (0, 0, 0)
 DARKGREY = (169, 169, 169)
+
 # tile width and height constant
 WIDTH = 20
 HEIGHT = 20
@@ -16,27 +20,29 @@ HEIGHT = 20
 # margin between tiles
 MARGIN = 5
 
-# calculate screen size based of tile size
-pygame.display.init()
+#ask the user for input
+
 # create the screen surface
 w = input("Width?")
 h = input("Height?")
-screen_width = int(w)
-screen_height = int(h)
+screen_width = (int(w) * 20) + ((int(w)+1)*5)
+screen_height = (int(h) * 20) + ((int(h)+1)*5)
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Minesweeper")
+
+#create tile grid
+board = [[tile() for i in range(int(w))]for j in range(int(h))]
 
 # main draw loop
 program_end = False
 font = pygame.font.SysFont('Ariel', 22)
 
 # looping multiple rects
-row = (screen_height // 20)
-column = (screen_width // 20)
+row = int(w)
+column = int(h)
 
 # game logic grid
-gamelogic = [[0] * row for i in range(column)]
 grid = [[0] * row for i in range(column)]
 bomb = pygame.image.load("bomb.png")
 # TODO: Set the clock rate to a specific FPS
@@ -50,30 +56,31 @@ while not program_end:
             pos = pygame.mouse.get_pos()
             c = pos[0] // (WIDTH + MARGIN)
             r = pos[1] // (HEIGHT + MARGIN)
-            gamelogic[c][r] = 9
+            board[c][r].isBomb = True
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
-    #TODO: add in cases for flagging, bombs, 1-4
+    #TODO: add in cases for flagging, bombs, 1-8
     for i in range(row):
         for j in range(column):
             color = GREY
 
-            grid[j][i] = pygame.draw.rect(screen, color,
-                                          [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
-                                           HEIGHT])
-            if gamelogic[j][i] == 1:
-                color = WHITE
+            if board[j][i].isVisible == False:
                 grid[j][i] = pygame.draw.rect(screen, color,
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
-                screen.blit(font.render("1", True, BLACK), (grid[j][i]))
-            if gamelogic[j][i] == 9:
+
+            if board[j][i].isVisible == True:
                 color = WHITE
-                temp = grid[j][i].move(-5,-5)
+                grid[j][i] =  pygame.draw.rect(screen, color,
+                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
+                                               HEIGHT])
+            if board[j][i].isBomb == True:
                 grid[j][i] = pygame.draw.rect(screen, color,
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
-                screen.blit(bomb,temp)
+                temp = grid[j][i].move(-5, -5)
+                screen.blit(bomb, temp)
+
     pygame.display.flip()
 
 pygame.quit()
