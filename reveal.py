@@ -1,90 +1,166 @@
-print("Input x,y values")
-print("X = ")
-a = input()
-print("Y = ")
+import random
+
+
+class Cla1:
+
+
+    def make_board(self, x, y, z):  # c = x (width) d = y (height) e = z (num bombs)
+        global board
+        board = []
+        # Declaration of board and adding posx/columns
+        for j in range(x):
+            column = []
+            for i in range(y):
+                column.append("-")
+            board.append(column)
+        return
+
+
+    def print_board(self):
+        cols = len(board)
+        posxs = 0
+        if cols:
+            posxs = len(board[0])
+        for j in range(posxs):
+            for i in range(cols):
+                print(board[i][j], end=" ")
+            print()
+        return board
+
+
+    def place_bomb(self, z):
+        n=0
+        while n<z:
+            e = random.randint(0, x-1)
+            f = random.randint(0, y-1)
+            if board[e][f] == "*":
+                n = n
+            else:
+                board[e][f] = "*"
+                n = n + 1
+        return board
+
+
+    def search(self, posx, posy):
+        global count
+
+        if posx-1<x and posx-1>=0 and posy<y and posy>=0:    #make sure is not out of bound
+            if board[posx-1][posy]=="*":  #if the adjacent is the bomb
+                count+=1
+
+        if posx+1<x and posx+1>=0 and posy< y and posy>=0:
+            if board[posx+1][posy]=="*":
+                count+=1
+
+        if posx<x and posx>=0 and posy-1< y and posy-1>=0:
+            if board[posx][posy-1]=="*":
+                count+=1
+
+        if posx<x and posx>=0 and posy+1< y and posy+1>=0:
+            if board[posx][posy+1]=="*":
+                count+=1
+
+        if posx-1<x and posx-1>=0 and posy-1< y and posy-1>=0:
+            if board[posx-1][posy-1]=="*":
+                count+=1
+
+        if posx-1<x and posx-1>=0 and posy+1< y and posy+1>=0:
+            if board[posx-1][posy+1]=="*":
+                count+=1
+
+        if posx+1<x and posx+1>=0 and posy-1< y and posy-1>=0:
+            if board[posx+1][posy-1]=="*":
+                count+=1
+
+        if posx+1<x and posx+1>=0 and posy+1< y and posy+1>=0:
+            if board[posx+1][posy+1]=="*":
+                count+=1
+        return count
+
+
+        def reveal(self, posx, posy):
+            if board[posx][posy]=="*":
+                return False
+            else:
+                recursion(posx, posy)
+                return True
+
+        def recursion(self, posx, posy):
+            if search(posx,posy)==0 and board[posx][posy]=="-": #if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
+                board[posx][posy]="0"
+                if posx-1<x and posx-1>=0 and posy<y and posy>=0: #make sure is in the bound
+                    board[posx][posy]="0"
+                    recursion(posx-1,posy) # go through it again since there is no bomb adjacent on the first tile
+
+                if posx+1<x and posx+1>=0 and posy< y and posy>=0:
+                    board[posx][posy]="0"
+                    recursion(posx+1,posy)
+
+                if posx<x and posx>=0 and posy-1< y and posy-1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx,posy-1);
+
+                if posx<x and posx>=0 and posy+1< y and posy+1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx,posy+1)
+
+                if posx-1<x and posx-1>=0 and posy-1< y and posy-1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx-1,posy-1)
+
+                if posx-1<x and posx-1>=0 and posy+1< y and posy+1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx-1,posy-1)
+
+                if posx+1<x and posx+1>=0 and posy-1< y and posy-1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx+1,posy-1)
+
+                if posx+1<x and posx+1>=0 and posy+1< y and posy+1>=0:
+                    board[posx][posy]="0"
+                    recursion(posx+1,posy+1)
+            else:
+                if search(posx,posy)==0:
+                    board[posx][posy]="0"
+                else:
+                    board[posx][posy]= count
+            return board
+
+
+print("Welcome to Pysweeper!")
+print("Input Board Attributes :)")
+print("Width = ")
+w = input()
+print("Height = ")
+h = input()
+print("Number of Bombs =")
 b = input()
-x = int(a)
-y = int(b)
-count = 0
 
-# declaration and adding columns
-board = []
-for j in range(x):
-    column = []
-    for i in range(y):
-        column.append("0")
-    board.append(column)
-
-# filling with data
-for i in range(0, x):  # top and bottom row
-    board[1][1] = "*"
-    board[1][3] = "*"
-
-for j in range(0, y):  # first and last column
-    board[3][1] = "*"
-    board[3][3] = "*"
-
-cols = len(board)
-rows = 0
-if cols:
-    rows = len(board[0])
-for j in range(rows):
-    for i in range(cols):
-        print(board[i][j], end=" ")
-    print()
-
-print("Enter the position you want to reveal")
-print("X =")
-a = input()
-print("Y= ")
-b = input()
-posx = int(a)
-posy = int(b)
+while int(b)>(int(w)*int(h))-1:
+    print("Error enter a valid number of Bombs.")
+    b = input()
 
 
-def check(posx,posy):
-    global count
-    if posx>=x or posy>=y or posx<0 or posy<0:
-        print("can't reveal the position out of bound")
-        status = False
-    if board[posx][posy]=="*":
-        print("game over")
-        status = False
-    if board[posx-1][posy]=="*":
-        count+=1
-    if board[posx+1][posy]=="*":
-        count+=1
-    if board[posx][posy-1]=="*":
-        count+=1
-    if board[posx][posy+1]=="*":
-        count+=1
-    if board[posx-1][posy-1]=="*":
-        count+=1
-    if board[posx+1][posy-1]=="*":
-        count+=1
-    if board[posx-1][posy+1]=="*":
-        count+=1
-    if board[posx+1][posy+1]=="*":
-        count+=1
+x = int(w)  # Width
+y = int(h)  # Height
+z = int(b)  # Number of bombs
 
-def reveal(posx,posy):
-    if count == "0":
-        reveal(posx,posy-1)
-        reveal(posx,posy+1)
-        reveal(posx-1,posy)
-        reveal(posx+1,posy)
-        reveal(posx-1,posy-1)
-        reveal(posx-1,posy+1)
-        reveal(posx+1,posy-1)
-        reveal(posx+1,posy+1)
-    else:
-        board = check(posx,posy)
+cla1 = Cla1()
+cla1.make_board(x, y, z)
+cla1.place_bomb(z)
+print()
+cla1.print_board()
 
+while True:
 
+    print("Enter the position you want to reveal")
+    print("X =")
+    h = input()
+    print("Y= ")
+    i = input()
+    posy = int(i)
+    posx = int(h)
 
-reveal(posx,posy)
-board[posx][posy] = count
-for j in range(rows):
-    for i in range(cols):
-        print(board[i][j], end=" ")
-    print()
+    if cla1.reveal(posx,posy)==False:
+        print("Game Over!")
+        break
