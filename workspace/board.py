@@ -133,7 +133,7 @@ class Cla1:
                 board[posx][posy] = count
         return board
 
-
+"""
 print("Welcome to Pysweeper!")
 print("Input Board Attributes :)")
 print("Width = ")
@@ -164,8 +164,9 @@ cla1.reveal_nums(x, y)
 cla1.print_board()
 
 print()
-print("Now we can use gooey to reveal single tiles.")
+print("Now we can use GUI to reveal single tiles.")
 print("Logic step 1: If tile is bomb, game over, and show board(reveal all tiles)")
 print("Logic step 2-3: If tile > 0 and not bomb , reveal tile # at clicked position")
 print("Logic step 2-3: If tile = 0 and not bomb, reveal tile(s)")
 print("Logic step 4: If past logic step 1-3, loop till user (Wins|Loses). Won ->(if ALL_REVEALED=true then WON)")
+"""
