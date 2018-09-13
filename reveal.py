@@ -74,18 +74,19 @@ class Cla1:
                 count += 1
         return count
 
-    def check_isbomb(self, posx, posy):
+    def check_isbomb(self, x, y, posx, posy):
 
-        if board[posx][posy] == "*":
-            return True
-        else:
-            return False
+        if 0 <= posx < x and 0 <= posy < y:  # make sure is not out of bound
+            if board[posx][posy] == "*":
+                return True
+            else:
+                return False
 
     def reveal_nums(self, x, y):
         l = 0
         for j in range(x):
             for i in range(y):
-                if cla1.check_isbomb(i, j) is False:
+                if cla1.check_isbomb(x, y, i, j) is False:
                     board = cla1.recursion(i, j)
                 else:
                     l = l
@@ -94,42 +95,42 @@ class Cla1:
         if cla1.search(posx, posy) == 0 and board[posx][posy] == "-":  # if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
             board[posx][posy] = "0"
 
-            if posx-1<x and posx-1>=0 and posy<y and posy>=0: #make sure is in the bound
-                board[posx][posy]="0"
-                cla1.recursion(posx-1,posy) # go through it again since there is no bomb adjacent on the first tile
+            if 0 <= posx-1 < x and 0 <= posy < y:  # make sure is in the bound
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy)  # go through it again since there is no bomb adjacent on the first tile
 
-            if posx+1<x and posx+1>=0 and posy< y and posy>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx+1,posy)
+            if 0 <= posx+1 < x and 0 <= posy < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx+1, posy)
 
-            if posx<x and posx>=0 and posy-1< y and posy-1>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx,posy-1);
+            if 0 <= posx < x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx, posy-1);
 
-            if posx<x and posx>=0 and posy+1< y and posy+1>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx,posy+1)
+            if 0 <= posx<x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx, posy+1)
 
-            if posx-1<x and posx-1>=0 and posy-1< y and posy-1>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx-1,posy-1)
+            if 0 <= posx-1 < x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy-1)
 
-            if posx-1<x and posx-1>=0 and posy+1< y and posy+1>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx-1,posy-1)
+            if 0 <= posx-1 < x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx-1, posy-1)
 
-            if posx+1<x and posx+1>=0 and posy-1< y and posy-1>=0:
-                board[posx][posy]="0"
-                cla1.recursion(posx+1,posy-1)
+            if 0 <= posx+1<x and 0 <= posy-1 < y:
+                board[posx][posy] = "0"
+                cla1.recursion(posx+1, posy-1)
 
-            if posx+1<x and posx+1>=0 and posy+1< y and posy+1>=0:
-                board[posx][posy]="0"
+            if 0 <= posx+1 < x and 0 <= posy+1 < y:
+                board[posx][posy] = "0"
                 cla1.recursion(posx+1,posy+1)
         else:
-            if cla1.search(posx,posy)==0:
-                board[posx][posy]="0"
+            if cla1.search(posx,posy) == 0:
+                board[posx][posy] = "0"
             else:
-                board[posx][posy]= count
+                board[posx][posy] = count
         return board
 
 
@@ -162,9 +163,9 @@ print()
 cla1.reveal_nums(x, y)
 cla1.print_board()
 
+print()
 print("Now we can use gooey to reveal single tiles.")
 print("Logic step 1: If tile is bomb, game over, and show board(reveal all tiles)")
 print("Logic step 2-3: If tile > 0 and not bomb , reveal tile # at clicked position")
 print("Logic step 2-3: If tile = 0 and not bomb, reveal tile(s)")
 print("Logic step 4: If past logic step 1-3, loop till user (Wins|Loses). Won ->(if ALL_REVEALED=true then WON)")
-# print("Game Over!")
