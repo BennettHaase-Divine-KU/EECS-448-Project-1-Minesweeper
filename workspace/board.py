@@ -1,5 +1,5 @@
 import random
-from tile import tile
+from workspace.tile import tile
 
 class Board:
 

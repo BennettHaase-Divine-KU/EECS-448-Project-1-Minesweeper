@@ -1,4 +1,4 @@
-from board import Board
+from workspace.board import Board
 
 class executive:
     def __init__(self, length, width, bombCnt):
@@ -29,10 +29,10 @@ class executive:
 
     def run(self):
         self.setUpBoard()
-        self.gameBoard.print_board_true()
         self.gameBoard.place_bomb()
         self.gameBoard.setAdjBomb()
-
+        self.gameBoard.print_board_true()
+        """
         self.gameState=0 #gameState 0->unresolved, 1->Win, 2->Loose
         while self.gameState==0:
             self.gameBoard.print_board_true()
@@ -49,11 +49,13 @@ class executive:
             self.gameBoard.reveal_tile(x,y)
             self.gameState=self.checkWinLoose()
             continue
+       
         self.gameBoard.print_board()
         if(self.gameState==2):
             print("YOU LOSE")
         elif(self.gameState==1):
             print("YOU WIN")
+         """
         return
 
 

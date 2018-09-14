@@ -1,6 +1,8 @@
 # import the pygame library, all this learned from
 # http://programarcadegames.com/index.php?lang=en&chapter=array_backed_grids
 from workspace.tile import tile
+from workspace.executive import executive
+
 
 import pygame
 
@@ -21,12 +23,19 @@ HEIGHT = 20
 MARGIN = 5
 
 #ask the user for input
+print("Welcome to Pysweeper!")
+print("Input Board Attributes :)")
+print("Width = ")
+w = input()
+print("Height = ")
+h = input()
+print("Number of Bombs =")
+b = input()
 
-# create the screen surface
-w = input("Width?")
-h = input("Height?")
 screen_width = (int(w) * 20) + ((int(w)+1)*5)
 screen_height = (int(h) * 20) + ((int(h)+1)*5)
+
+# create the screen surface
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Minesweeper")
@@ -39,8 +48,8 @@ program_end = False
 font = pygame.font.SysFont('Ariel', 22)
 
 # looping multiple rects
-row = int(w)
-column = int(h)
+row = int(h)
+column = int(w)
 
 # game logic grid
 grid = [[0] * row for i in range(column)]
@@ -48,8 +57,14 @@ bomb = pygame.image.load("bomb.png")
 flag = pygame.image.load("flag.png")
 # TODO: Set the clock rate to a specific FPS
 
-while not program_end:
+exe = executive(int(h), int(w), int(b))
+exe.run()
+gamestate = 0
+while not program_end and gamestate == 0:
     # TODO: Click will reveal the tile
+
+
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             program_end = True
@@ -57,7 +72,7 @@ while not program_end:
             pos = pygame.mouse.get_pos()
             c = pos[0] // (WIDTH + MARGIN)
             r = pos[1] // (HEIGHT + MARGIN)
-            board[c][r].isVisible = True
+            exe.gameBoard.reveal_tile(c,r)
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
     #TODO: add in cases for flagging, bombs, 1-8
@@ -65,29 +80,34 @@ while not program_end:
         for j in range(column):
             color = GREY
 
-            if board[j][i].isVisible == False:
+            if exe.gameBoard.board[j][i].isVisible == False:
                 grid[j][i] = pygame.draw.rect(screen, color,
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
 
-            if board[j][i].isVisible == True:
+            if exe.gameBoard.board[j][i].isVisible == True:
                 color = WHITE
                 grid[j][i] =  pygame.draw.rect(screen, color,
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
-            if board[j][i].isBomb == True:
+            if exe.gameBoard.board[j][i].isBomb == True and exe.gameBoard.board[j][i].isVisible == True :
                 grid[j][i] = pygame.draw.rect(screen, color,
                                               [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
                                                HEIGHT])
                 temp = grid[j][i].move(-5, -5)
                 screen.blit(bomb, temp)
-            if board[j][i].adjBomb >  0:
+            if exe.gameBoard.board[j][i].adjBomb >  0 and exe.gameBoard.board[j][i].isVisible == True:
                 temp = grid[j][i].move(5,5)
-                screen.blit(font.render(str(board[j][i].adjBomb), True, BLACK), (temp))
-            if board[j][i].isFlagged == True:
+                screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
+            if exe.gameBoard.board[j][i].isFlagged == True:
                 screen.blit(flag,grid[j][i])
-
+    gamestate = exe.checkWinLoose()
 
     pygame.display.flip()
-
+if (gamestate == 2):
+            print("YOU LOSE")
+elif (gamestate == 1):
+            print("YOU WIN")
+            screen.fill(WHITE)
+            screen.blit(font.render("You WIN!!!"),True,BLACK)
 pygame.quit()
