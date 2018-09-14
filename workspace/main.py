@@ -9,5 +9,5 @@ h = input()
 print("Number of Bombs =")
 b = input()
 
-exe=executive(int(w),int(h),int(b))
+exe=executive(int(h),int(w),int(b))
 exe.run()
