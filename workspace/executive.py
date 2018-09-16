@@ -46,7 +46,7 @@ class executive:
         """
         self.gameBoard.make_board(self.width, self.length, self.bombCnt)
         return
-
+    """To set up the initial board for minesweeper"""
     def run(self):
         """Run method
         Initializes the board, places bombs
