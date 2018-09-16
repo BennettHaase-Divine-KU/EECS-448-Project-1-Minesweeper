@@ -33,12 +33,19 @@ h = input()
 print("Number of Bombs =")
 b = input()"""
 
-screen = Tk()
-inputScreen = inputGui(screen)
-screen.mainloop()
-w = inputScreen.getWidth()
-h = inputScreen.getHeight()
-b = inputScreen.getBombNum()
+w=2
+h=2
+b=1
+
+try:
+    screen = Tk()
+    inputScreen = inputGui(screen)
+    screen.mainloop()
+    w = inputScreen.getWidth()
+    h = inputScreen.getHeight()
+    b = inputScreen.getBombNum()
+except ValueError:
+    pass
 
 
 #calculate the required screen size based on amount of tiles
