@@ -32,13 +32,14 @@ h = input()
 print("Number of Bombs =")
 b = input()
 
+#calculate the required screen size based on amount of tiles
 screen_width = (int(w) * 20) + ((int(w)+1)*5)
 screen_height = (int(h) * 20) + ((int(h)+1)*5)
 
 # create the screen surface
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
-pygame.display.set_caption("Minesweeper")
+pygame.display.set_caption("Pysweeper")
 
 #create tile grid
 board = [[tile() for i in range(int(w))]for j in range(int(h))]
@@ -61,10 +62,6 @@ exe = executive(int(h), int(w), int(b))
 exe.run()
 gamestate = 0
 while not program_end and gamestate == 0:
-    # TODO: Click will reveal the tile
-
-
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             program_end = True
@@ -75,7 +72,8 @@ while not program_end and gamestate == 0:
             exe.gameBoard.reveal_tile(c,r)
             print("Click", pos, "Grid coordinates: ", r, c)
     screen.fill(DARKGREY)
-    #TODO: add in cases for flagging, bombs, 1-8
+
+
     for i in range(row):
         for j in range(column):
             color = GREY
