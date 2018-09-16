@@ -156,3 +156,5 @@ class Board:
         elif(self.board[posx][posy].isVisible==False): #If tile is not revealded but has adjacent bombs just reveal tile
             self.board[posx][posy].isVisible = True
 
+    def flag_tile(self, posx, posy):
+        self.board[posx][posy].isFlagged=True
