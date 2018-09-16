@@ -1,9 +1,9 @@
-import random
-from workspace.tile import tile
 """@package docstring
  Board class
 
 """
+import random
+from workspace.tile import tile
 class Board:
     """ Creates an array of tile objects and has methods to interact with those tiles
     """
@@ -59,7 +59,6 @@ class Board:
                 self.board[e][f].isBomb = True
                 n = n + 1
         return self.board
-
 
 
     """Prints the true array to terminal
