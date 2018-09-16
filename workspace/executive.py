@@ -1,13 +1,29 @@
+"""@package docstring
+Tile class
+"""
+
 from workspace.board import Board
 
 class executive:
+    """
+    Execuitve class
+    Intermidiet class between player (GUI) and board / tile objects
+    """
     def __init__(self, length, width, bombCnt):
+        """Constructor
+        Initialises inter variables
+        """
         self.gameBoard=Board()
         self.length=length
         self.width=width
         self.bombCnt=bombCnt
 
     def checkWinLose(self):
+        """Checks game logic for a win or lose
+        0->Unresolved
+        1->Win
+        2->Lose
+        """
         num_safe_tile=self.length*self.width-self.bombCnt
         num_safe_revealed_tile=0
         num_flagged_tile = 0
@@ -26,10 +42,15 @@ class executive:
             return 0
 
     def setUpBoard(self):
+        """Creates the board
+        """
         self.gameBoard.make_board(self.width, self.length, self.bombCnt)
         return
 
     def run(self):
+        """Run method
+        Initializes the board, places bombs
+        """
         self.setUpBoard()
         self.gameBoard.place_bomb()
         self.gameBoard.setAdjBomb()
