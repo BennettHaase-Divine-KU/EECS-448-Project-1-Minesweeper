@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-  class tile:
+class tile:
 =======
 """@package docstring
 Tile class
