@@ -49,7 +49,8 @@ screen_height = (int(h) * 20) + ((int(h)+1)*5)
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
-
+icon = pygame.image.load("MemoryLeakLogo.png")
+pygame.display.set_icon(icon)
 #create tile grid
 board = [[tile() for i in range(int(w))]for j in range(int(h))]
 
@@ -65,8 +66,10 @@ column = int(w)
 grid = [[0] * row for i in range(column)]
 bomb = pygame.image.load("bomb.png")
 flag = pygame.image.load("flag.png")
-# TODO: Set the clock rate to a specific FPS
 
+
+#Sets clock rate
+clock = pygame.time.Clock()
 exe = executive(int(h), int(w), int(b))
 exe.run()
 gamestate = 0
@@ -75,11 +78,16 @@ while not program_end and gamestate == 0:
         if event.type == pygame.QUIT:
             program_end = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
-            pos = pygame.mouse.get_pos()
-            c = pos[0] // (WIDTH + MARGIN)
-            r = pos[1] // (HEIGHT + MARGIN)
-            exe.gameBoard.reveal_tile(c,r)
-            print("Click", pos, "Grid coordinates: ", r, c)
+            if(event.button == 1):
+                pos = pygame.mouse.get_pos()
+                c = pos[0] // (WIDTH + MARGIN)
+                r = pos[1] // (HEIGHT + MARGIN)
+                exe.gameBoard.reveal_tile(c,r)
+            elif(event.button == 3):
+                pos = pygame.mouse.get_pos()
+                c = pos[0] // (WIDTH + MARGIN)
+                r = pos[1] // (HEIGHT + MARGIN)
+                exe.gameBoard.flag_tile(c,r)
     screen.fill(DARKGREY)
 
 
@@ -106,10 +114,11 @@ while not program_end and gamestate == 0:
             if exe.gameBoard.board[j][i].adjBomb >  0 and exe.gameBoard.board[j][i].isVisible == True:
                 temp = grid[j][i].move(5,5)
                 screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
-            if exe.gameBoard.board[j][i].isFlagged == True:
+            if exe.gameBoard.board[j][i].isFlagged == True and exe.gameBoard.board[j][i].isVisible == False:
                 screen.blit(flag,grid[j][i])
     gamestate = exe.checkWinLose()
 
+    clock.tick(60)
     pygame.display.flip()
 if (gamestate == 2):
             print("YOU LOSE")
