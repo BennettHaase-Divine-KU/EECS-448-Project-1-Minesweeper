@@ -89,7 +89,13 @@ while not program_end and gamestate == 0:
                 pos = pygame.mouse.get_pos()
                 c = pos[0] // (WIDTH + MARGIN)
                 r = pos[1] // (HEIGHT + MARGIN)
+                if(c >= column):
+                    c = column - 1
+                if(r >= row):
+                    r = row - 1
+                print(c, r)
                 exe.gameBoard.reveal_tile(c,r)
+
             elif(event.button == 3):
                 pos = pygame.mouse.get_pos()
                 c = pos[0] // (WIDTH + MARGIN)
