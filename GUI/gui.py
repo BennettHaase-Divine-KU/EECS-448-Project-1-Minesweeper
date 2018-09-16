@@ -2,7 +2,8 @@
 # http://programarcadegames.com/index.php?lang=en&chapter=array_backed_grids
 from workspace.tile import tile
 from workspace.executive import executive
-
+from GUI.inputgui import inputGui
+from tkinter import *
 
 import pygame
 
@@ -23,14 +24,22 @@ HEIGHT = 20
 MARGIN = 5
 
 #ask the user for input
-print("Welcome to Pysweeper!")
+"""print("Welcome to Pysweeper!")
 print("Input Board Attributes :)")
 print("Width = ")
 w = input()
 print("Height = ")
 h = input()
 print("Number of Bombs =")
-b = input()
+b = input()"""
+
+screen = Tk()
+inputScreen = inputGui(screen)
+screen.mainloop()
+w = inputScreen.getWidth()
+h = inputScreen.getHeight()
+b = inputScreen.getBombNum()
+
 
 #calculate the required screen size based on amount of tiles
 screen_width = (int(w) * 20) + ((int(w)+1)*5)
