@@ -40,7 +40,7 @@ class executive:
             return 1
         else:
             return 0
-
+    """To call the make_board method"""
     def setUpBoard(self):
         """Creates the board
         """
