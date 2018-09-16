@@ -46,7 +46,7 @@ try:
         w = inputScreen.getWidth()
         h = inputScreen.getHeight()
         b = inputScreen.getBombNum()
-        if (w >= 2) or (h >= 2) or (b >= 1):
+        if (2 <= w < 33) or (2 <= h < 33) or (b >= 1):
             incorrect == False
 
 except ValueError:
