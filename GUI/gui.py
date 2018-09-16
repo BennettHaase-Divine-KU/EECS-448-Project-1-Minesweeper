@@ -99,7 +99,7 @@ while not program_end and gamestate == 0:
                 screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
             if exe.gameBoard.board[j][i].isFlagged == True:
                 screen.blit(flag,grid[j][i])
-    gamestate = exe.checkWinLoose()
+    gamestate = exe.checkWinLose()
 
     pygame.display.flip()
 if (gamestate == 2):
