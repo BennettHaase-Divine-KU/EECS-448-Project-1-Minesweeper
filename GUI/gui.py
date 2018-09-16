@@ -40,19 +40,23 @@ h=2
 b=1
 incorrect = True
 
-try:
-    while (incorrect == True):
+
+while (incorrect == True):
+    try:
         screen = Tk()
         inputScreen = inputGui(screen)
         screen.mainloop()
-        w = inputScreen.getWidth()
-        h = inputScreen.getHeight()
-        b = inputScreen.getBombNum()
+        w = int(inputScreen.getWidth())
+        h = int(inputScreen.getHeight())
+        b = int(inputScreen.getBombNum())
         if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
 
-except ValueError:
-    pass
+    except ValueError:
+        print('Please enter a valid integer')
+        continue
+    break
+
 
 
 
