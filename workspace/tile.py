@@ -1,4 +1,4 @@
-class tile:
+  class tile:
     def __init__(self):
         self.isBomb=False
         self.isVisible=False
