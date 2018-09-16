@@ -175,4 +175,4 @@ class Board:
     flagging all tiles will win game
     """
     def flag_tile(self, posx, posy):
-        self.board[posx][posy].isFlagged=True
+        self.board[posx][posy].isFlagged=not self.board[posx][posy].isFlagged
