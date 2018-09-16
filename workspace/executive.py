@@ -17,7 +17,8 @@ class executive:
         self.length=length
         self.width=width
         self.bombCnt=bombCnt
-    """To check continue the game or not"""
+    """To check continue the game or not
+    """
     def checkWinLose(self):
         """Checks game logic for a win or lose
         0->Unresolved
@@ -40,13 +41,15 @@ class executive:
             return 1
         else:
             return 0
-    """To call the make_board method"""
+    """To call the make_board method
+    """
     def setUpBoard(self):
         """Creates the board
         """
         self.gameBoard.make_board(self.width, self.length, self.bombCnt)
         return
-    """To set up the initial board for minesweeper"""
+    """To set up the initial board for minesweeper
+    """
     def run(self):
         """Run method
         Initializes the board, places bombs
