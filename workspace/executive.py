@@ -17,7 +17,7 @@ class executive:
         self.length=length
         self.width=width
         self.bombCnt=bombCnt
-
+    """To check continue the game or not"""
     def checkWinLose(self):
         """Checks game logic for a win or lose
         0->Unresolved
