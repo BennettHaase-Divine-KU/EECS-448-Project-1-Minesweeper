@@ -131,6 +131,4 @@ if (gamestate == 2):
             print("YOU LOSE")
 elif (gamestate == 1):
             print("YOU WIN")
-            screen.fill(WHITE)
-            screen.blit(font.render("You WIN!!!"),True,BLACK)
 pygame.quit()
