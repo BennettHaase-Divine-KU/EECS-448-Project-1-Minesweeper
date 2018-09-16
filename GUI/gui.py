@@ -36,16 +36,23 @@ b = input()"""
 w=2
 h=2
 b=1
+incorrect = True
 
 try:
-    screen = Tk()
-    inputScreen = inputGui(screen)
-    screen.mainloop()
-    w = inputScreen.getWidth()
-    h = inputScreen.getHeight()
-    b = inputScreen.getBombNum()
+    while (incorrect == True):
+        screen = Tk()
+        inputScreen = inputGui(screen)
+        screen.mainloop()
+        w = inputScreen.getWidth()
+        h = inputScreen.getHeight()
+        b = inputScreen.getBombNum()
+        if (w >= 2) or (h >= 2) or (b >= 1):
+            incorrect == False
+
 except ValueError:
     pass
+
+
 
 
 #calculate the required screen size based on amount of tiles
@@ -89,7 +96,13 @@ while not program_end and gamestate == 0:
                 pos = pygame.mouse.get_pos()
                 c = pos[0] // (WIDTH + MARGIN)
                 r = pos[1] // (HEIGHT + MARGIN)
+                if(c >= column):
+                    c = column - 1
+                if(r >= row):
+                    r = row - 1
+                print(c, r)
                 exe.gameBoard.reveal_tile(c,r)
+
             elif(event.button == 3):
                 pos = pygame.mouse.get_pos()
                 c = pos[0] // (WIDTH + MARGIN)
