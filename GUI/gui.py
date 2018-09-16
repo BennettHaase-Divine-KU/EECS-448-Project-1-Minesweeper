@@ -63,8 +63,8 @@ screen_height = (int(h) * 20) + ((int(h)+1)*5)
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
-#icon = pygame.image.load("MemoryLeakLogo.png")
-#pygame.display.set_icon(icon)
+icon = pygame.image.load("MemoryLeakLogo.png")
+pygame.display.set_icon(icon)
 #create tile grid
 board = [[tile() for i in range(int(w))]for j in range(int(h))]
 
@@ -141,7 +141,13 @@ while not program_end and gamestate == 0:
     clock.tick(60)
     pygame.display.flip()
 if (gamestate == 2):
-            print("YOU LOSE")
+        loseCase = Tk()
+        Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
+        loseCase.mainloop()
+        print("YOU LOSE")
 elif (gamestate == 1):
-            print("YOU WIN")
+        winCase = Tk()
+        Label(winCase, text="YOU WIN!!", ).grid(row=0)
+        winCase.mainloop()
+        print("YOU WIN")
 pygame.quit()
