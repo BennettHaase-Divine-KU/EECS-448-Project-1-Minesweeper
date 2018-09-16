@@ -1,6 +1,6 @@
 <<<<<<< HEAD
 class tile:
-=======
+
 """@package docstring
 Tile class
 """
