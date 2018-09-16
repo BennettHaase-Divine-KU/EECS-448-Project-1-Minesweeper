@@ -1,3 +1,5 @@
 ->Add You win/loose props on winning and losing
 ->wrapping GUI class into methods
 ->Document more
+->decide in user input parameters (max length, width and number of bombs based on length and width)
+->Clean up what is/is not printed to terminal
