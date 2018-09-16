@@ -63,8 +63,8 @@ screen_height = (int(h) * 20) + ((int(h)+1)*5)
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
-icon = pygame.image.load("MemoryLeakLogo.png")
-pygame.display.set_icon(icon)
+#icon = pygame.image.load("MemoryLeakLogo.png")
+#pygame.display.set_icon(icon)
 #create tile grid
 board = [[tile() for i in range(int(w))]for j in range(int(h))]
 
