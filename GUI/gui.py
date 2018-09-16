@@ -41,7 +41,9 @@ b=1
 incorrect = True
 
 
-while (incorrect == True):
+
+
+while (incorrect==True):
     try:
         screen = Tk()
         inputScreen = inputGui(screen)
@@ -51,11 +53,9 @@ while (incorrect == True):
         b = int(inputScreen.getBombNum())
         if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
-
     except ValueError:
-        print('Please enter a valid integer')
-        continue
-    break
+        pass
+        print("Please input integer")
 
 
 
