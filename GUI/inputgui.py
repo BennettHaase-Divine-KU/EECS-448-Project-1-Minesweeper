@@ -1,11 +1,13 @@
-#this class is going to be used to gain input for pysweeper metrics
-# learned from http://effbot.org/tkinterbook/entry.htm
+"""this class is going to be used to gain input for pysweeper metrics
+learned from http://effbot.org/tkinterbook/entry.htm
+"""
 from tkinter import *
 import sys
 
 class inputGui:
     """User needs to instantiate a Tk() object and use that as the second argument to this constructor. Then call
-        (Tk object).mainloop() to run GUI."""
+        (Tk object).mainloop() to run GUI.
+    """
     def __init__(self,master):
         master.title("Pysweeper")
         self.width = StringVar()
@@ -30,9 +32,10 @@ class inputGui:
         return int(self.height.get())
     def getBombNum(self):
         return int(self.numBombs.get())
-# Example
-#   screen = Tk()
-#   inputScreen = input_gui(screen)
-#   screen.mainloop()
+"""Example
+   screen = Tk()
+   inputScreen = input_gui(screen)
+   screen.mainloop()
+"""
 
 
