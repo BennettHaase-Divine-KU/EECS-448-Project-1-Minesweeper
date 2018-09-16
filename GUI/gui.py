@@ -55,34 +55,41 @@ except ValueError:
 
 
 
-#calculate the required screen size based on amount of tiles
+"""calculate the required screen size based on amount of tiles
+"""
 screen_width = (int(w) * 20) + ((int(w)+1)*5)
 screen_height = (int(h) * 20) + ((int(h)+1)*5)
 
-# create the screen surface
+""" create the screen surface
+"""
 size = screen_width, screen_height
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
 icon = pygame.image.load("MemoryLeakLogo.png")
 pygame.display.set_icon(icon)
-#create tile grid
+"""create tile grid
+"""
 board = [[tile() for i in range(int(w))]for j in range(int(h))]
 
-# main draw loop
+"""main draw loop
+"""
 program_end = False
 font = pygame.font.SysFont('Ariel', 22)
 
-# looping multiple rects
+"""looping multiple rects
+"""
 row = int(h)
 column = int(w)
 
-# game logic grid
+"""game logic grid
+"""
 grid = [[0] * row for i in range(column)]
 bomb = pygame.image.load("bomb.png")
 flag = pygame.image.load("flag.png")
 
 
-#Sets clock rate
+"""Sets clock rate
+"""
 clock = pygame.time.Clock()
 exe = executive(int(h), int(w), int(b))
 exe.run()
