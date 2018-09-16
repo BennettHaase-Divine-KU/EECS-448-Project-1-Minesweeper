@@ -36,16 +36,23 @@ b = input()"""
 w=2
 h=2
 b=1
+incorrect = True
 
 try:
-    screen = Tk()
-    inputScreen = inputGui(screen)
-    screen.mainloop()
-    w = inputScreen.getWidth()
-    h = inputScreen.getHeight()
-    b = inputScreen.getBombNum()
+    while (incorrect == True):
+        screen = Tk()
+        inputScreen = inputGui(screen)
+        screen.mainloop()
+        w = inputScreen.getWidth()
+        h = inputScreen.getHeight()
+        b = inputScreen.getBombNum()
+        if (w >= 2) or (h >= 2) or (b >= 1):
+            incorrect == False
+
 except ValueError:
     pass
+
+
 
 
 #calculate the required screen size based on amount of tiles
