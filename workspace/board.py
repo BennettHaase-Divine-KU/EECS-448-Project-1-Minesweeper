@@ -17,7 +17,7 @@ class Board:
         self.width=x
         self.length=y
         self.num_bombs=z
-
+        self.num_flagged=0
 
         for j in range(self.width):
             column = []
@@ -173,6 +173,12 @@ class Board:
 
     """flagging a tile
     flagging all tiles will win game
+    num of flagged cannot exceed number of bombs
     """
     def flag_tile(self, posx, posy):
-        self.board[posx][posy].isFlagged=not self.board[posx][posy].isFlagged
+        if(self.num_flagged<self.num_bombs and self.board[posx][posy].isFlagged == False):
+            self.board[posx][posy].isFlagged= True
+            self.num_flagged=self.num_flagged+1
+        else:
+            self.board[posx][posy].isFlagged = False
+            self.num_flagged = self.num_flagged - 1
