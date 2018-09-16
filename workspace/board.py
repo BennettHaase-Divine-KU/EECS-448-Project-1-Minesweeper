@@ -135,7 +135,7 @@ class Board:
     if tile is a bomb check_win_lose method will take care of game over state
     """
     def reveal_tile(self, posx, posy):
-        if self.board[posx][posy].adjBomb == 0 and self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlaged==False:  # if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
+        if self.board[posx][posy].adjBomb == 0 and self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlagged==False:  # if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
             if 0 <= posx-1 < self.width and 0 <= posy < self.length:  # make sure is in the bound
                 self.board[posx][posy].isVisible = True
                 self.reveal_tile(posx - 1, posy)  # go through it again since there is no bomb adjacent on the first tile
@@ -168,7 +168,7 @@ class Board:
                 self.board[posx][posy].isVisible = True
                 self.reveal_tile(posx + 1, posy + 1)
 
-        elif(self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlaged==False): #If tile is not revealded but has adjacent bombs just reveal tile
+        elif(self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlagged==False): #If tile is not revealded but has adjacent bombs just reveal tile
             self.board[posx][posy].isVisible = True
 
     """flagging a tile
