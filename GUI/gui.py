@@ -10,7 +10,8 @@ import pygame
 pygame.init()
 pygame.display.init()
 
-# definition of colors
+"""definition of colors
+"""
 WHITE = (255, 255, 255)
 GREY = (211, 211, 211)
 BLACK = (0, 0, 0)
@@ -23,7 +24,8 @@ HEIGHT = 20
 # margin between tiles
 MARGIN = 5
 
-#ask the user for input
+"""ask the user for input
+"""
 """print("Welcome to Pysweeper!")
 print("Input Board Attributes :)")
 print("Width = ")
