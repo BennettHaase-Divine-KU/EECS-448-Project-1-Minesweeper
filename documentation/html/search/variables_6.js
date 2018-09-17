@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['width',['width',['../classboard_1_1_board.html#a96e3212b056035d81c4081b01be6eada',1,'board.Board.width()'],['../classexecutive_1_1executive.html#a3ffae68509fd1c2b2043198df88b913c',1,'executive.executive.width()']]]
+  ['num_5fbombs',['num_bombs',['../classboard_1_1_board.html#a02ab9ac6c1ca1cc4d90de80a41238671',1,'board::Board']]],
+  ['num_5fflagged',['num_flagged',['../classboard_1_1_board.html#a06330638cbfa0ae779bb1a149ad26bc4',1,'board::Board']]],
+  ['numbombs',['numBombs',['../classinputgui_1_1input_gui.html#a62e0a13711c70a8850c47265683eb048',1,'inputgui::inputGui']]]
 ];

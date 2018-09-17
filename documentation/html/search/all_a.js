@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['num_5fbombs',['num_bombs',['../classboard_1_1_board.html#a02ab9ac6c1ca1cc4d90de80a41238671',1,'board::Board']]],
-  ['num_5fflagged',['num_flagged',['../classboard_1_1_board.html#a06330638cbfa0ae779bb1a149ad26bc4',1,'board::Board']]]
+  ['make_5fboard',['make_board',['../classboard_1_1_board.html#ad8ae45ae3897296e325afbeb0ae8ae18',1,'board::Board']]]
 ];

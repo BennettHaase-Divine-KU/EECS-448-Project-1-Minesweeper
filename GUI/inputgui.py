@@ -9,18 +9,25 @@ class inputGui:
         (Tk object).mainloop() to run GUI.
     """
     def __init__(self,master):
+        """Constructor, Contains all Tk objects
+        """
         master.title("Pysweeper")
+        ##Width from user
         self.width = StringVar()
+        ##Height from user
         self.height = StringVar()
+        ##Bombs from user
         self.numBombs =  StringVar()
         Label(master, text="Max Values (Height: 40, Width: 72, Empty Tiles: 1088)").grid(row=0, column=1)
         Label(master, text="Height:", ).grid(row=1)
         Label(master, text="Width:").grid(row=2)
         Label(master, text="Number of bombs:").grid(row=3)
+        ##Width Widget
         self.widthEntry = Entry(master, textvariable= self.width)
+        ##Heigh Widget
         self.heightEntry = Entry(master, textvariable= self.height)
+        ##Bomb Widget
         self.bombNum = Entry(master, textvariable= self.numBombs)
-
         self.widthEntry.grid(row=1, column=1)
         self.heightEntry.grid(row=2, column=1)
         self.bombNum.grid(row=3, column=1)
