@@ -52,13 +52,13 @@ while (incorrect == True):
         if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
 
+        raise ValueError()
+        break;
     except ValueError:
         badCase = Tk()
         Label(badCase, text="Please enter a valid integer", ).grid(row=0)
-        Button(badCase,text="Ok",command=badCase.destroy).grid(row=1)
+        Button(badCase, text="Ok", command=badCase.destroy).grid(row=1)
         badCase.mainloop()
-        continue
-    break
 
 
 
