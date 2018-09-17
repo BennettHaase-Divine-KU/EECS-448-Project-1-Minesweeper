@@ -181,3 +181,15 @@ class Board:
         elif(self.board[posx][posy].isFlagged == True):
             self.board[posx][posy].isFlagged = False
             self.num_flagged = self.num_flagged - 1
+
+    """Reveals all tiles
+    useful in end game case"""
+    def reveal_all(self):
+        cols = len(self.board)
+        rows = 0
+        if cols:
+            rows = len(self.board[0])
+        for j in range(rows):
+            for i in range(cols):
+                self.board[i][j].isVisible = True
+

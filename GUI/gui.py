@@ -7,6 +7,35 @@ from tkinter import *
 
 import pygame
 
+def print_board():
+    screen.fill(DARKGREY)
+    for i in range(row):
+        for j in range(column):
+            color = GREY
+
+            if exe.gameBoard.board[j][i].isVisible == False:
+                grid[j][i] = pygame.draw.rect(screen, color,
+                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
+                                               HEIGHT])
+
+            if exe.gameBoard.board[j][i].isVisible == True:
+                color = WHITE
+                grid[j][i] =  pygame.draw.rect(screen, color,
+                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
+                                               HEIGHT])
+            if exe.gameBoard.board[j][i].isBomb == True and exe.gameBoard.board[j][i].isVisible == True :
+                grid[j][i] = pygame.draw.rect(screen, color,
+                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
+                                               HEIGHT])
+                temp = grid[j][i].move(-5, -5)
+                screen.blit(bomb, temp)
+            if exe.gameBoard.board[j][i].adjBomb >  0 and exe.gameBoard.board[j][i].isVisible == True:
+                temp = grid[j][i].move(5,5)
+                screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
+            if exe.gameBoard.board[j][i].isFlagged == True and exe.gameBoard.board[j][i].isVisible == False:
+                screen.blit(flag,grid[j][i])
+    pygame.display.flip()
+
 pygame.init()
 pygame.display.init()
 
@@ -116,46 +145,21 @@ while not program_end and gamestate == 0:
                 c = pos[0] // (WIDTH + MARGIN)
                 r = pos[1] // (HEIGHT + MARGIN)
                 exe.gameBoard.flag_tile(c,r)
-    screen.fill(DARKGREY)
-
-
-    for i in range(row):
-        for j in range(column):
-            color = GREY
-
-            if exe.gameBoard.board[j][i].isVisible == False:
-                grid[j][i] = pygame.draw.rect(screen, color,
-                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
-                                               HEIGHT])
-
-            if exe.gameBoard.board[j][i].isVisible == True:
-                color = WHITE
-                grid[j][i] =  pygame.draw.rect(screen, color,
-                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
-                                               HEIGHT])
-            if exe.gameBoard.board[j][i].isBomb == True and exe.gameBoard.board[j][i].isVisible == True :
-                grid[j][i] = pygame.draw.rect(screen, color,
-                                              [(MARGIN + WIDTH) * j + MARGIN, (HEIGHT + MARGIN) * i + MARGIN, WIDTH,
-                                               HEIGHT])
-                temp = grid[j][i].move(-5, -5)
-                screen.blit(bomb, temp)
-            if exe.gameBoard.board[j][i].adjBomb >  0 and exe.gameBoard.board[j][i].isVisible == True:
-                temp = grid[j][i].move(5,5)
-                screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
-            if exe.gameBoard.board[j][i].isFlagged == True and exe.gameBoard.board[j][i].isVisible == False:
-                screen.blit(flag,grid[j][i])
+    print_board()
     gamestate = exe.checkWinLose()
 
     clock.tick(60)
-    pygame.display.flip()
+
 if (gamestate == 2):
-        loseCase = Tk()
-        Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
-        loseCase.mainloop()
-        print("YOU LOSE")
+    exe.gameBoard.reveal_all()
+    print_board()
+    loseCase = Tk()
+    Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
+    loseCase.mainloop()
+    print("YOU LOSE")
 elif (gamestate == 1):
-        winCase = Tk()
-        Label(winCase, text="YOU WIN!!", ).grid(row=0)
-        winCase.mainloop()
-        print("YOU WIN")
+    winCase = Tk()
+    Label(winCase, text="YOU WIN!!", ).grid(row=0)
+    winCase.mainloop()
+    print("YOU WIN")
 pygame.quit()
