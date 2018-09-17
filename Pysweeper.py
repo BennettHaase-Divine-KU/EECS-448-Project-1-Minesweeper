@@ -77,7 +77,7 @@ while (incorrect == True):
         break;
     except ValueError:
         badCase = Tk()
-        badCase.iconbitmap('GUI\MemoryLeakLogo.ico')
+        badCase.iconbitmap(r'GUI\MemoryLeakLogo.ico')
         required = 1
         if ((w * h) > 1088):
             required = (w*h) - 1088
