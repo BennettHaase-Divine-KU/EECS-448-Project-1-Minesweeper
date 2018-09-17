@@ -26,14 +26,6 @@ MARGIN = 5
 
 """ask the user for input
 """
-"""print("Welcome to Pysweeper!")
-print("Input Board Attributes :)")
-print("Width = ")
-w = input()
-print("Height = ")
-h = input()
-print("Number of Bombs =")
-b = input()"""
 
 w=2
 h=2

@@ -178,6 +178,6 @@ class Board:
         if(self.num_flagged<self.num_bombs and self.board[posx][posy].isFlagged == False):
             self.board[posx][posy].isFlagged= True
             self.num_flagged=self.num_flagged+1
-        else:
+        elif(self.board[posx][posy].isFlagged == True):
             self.board[posx][posy].isFlagged = False
             self.num_flagged = self.num_flagged - 1
