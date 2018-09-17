@@ -3,3 +3,4 @@
 ->Document more
 ->decide in user input parameters (max length, width and number of bombs based on length and width)
 ->Clean up what is/is not printed to terminal
+->play again

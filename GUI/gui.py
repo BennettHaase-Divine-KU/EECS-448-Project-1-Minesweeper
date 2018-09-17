@@ -53,8 +53,7 @@ HEIGHT = 20
 # margin between tiles
 MARGIN = 5
 
-"""ask the user for input
-"""
+
 
 w=2
 h=2
@@ -93,7 +92,7 @@ screen_height = (int(h) * 20) + ((int(h)+1)*5)
 
 """ create the screen surface
 """
-size = screen_width, screen_height
+size =  screen_height, screen_width
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
 icon = pygame.image.load("MemoryLeakLogo.png")
@@ -109,8 +108,8 @@ font = pygame.font.SysFont('Ariel', 22)
 
 """looping multiple rects
 """
-row = int(h)
-column = int(w)
+row = int(w)
+column = int(h)
 
 """game logic grid
 """
@@ -122,7 +121,8 @@ flag = pygame.image.load("flag.png")
 """Sets clock rate
 """
 clock = pygame.time.Clock()
-exe = executive(int(h), int(w), int(b))
+#exe = executive(int(h), int(w), int(b))
+exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
 while not program_end and gamestate == 0:
