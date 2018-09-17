@@ -67,6 +67,7 @@ while (incorrect == True):
         screen = Tk()
         screen.iconbitmap('GUI\MemoryLeakLogo.ico')
         inputScreen = inputGui(screen)
+        screen.protocol("WM_DELETE_WINDOW", sys.exit)
         screen.mainloop()
         w = int(inputScreen.getWidth())
         h = int(inputScreen.getHeight())
