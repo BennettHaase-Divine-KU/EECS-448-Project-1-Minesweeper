@@ -1,0 +1,138 @@
+\hypertarget{classboard_1_1_board}{}\section{board.\+Board Class Reference}
+\label{classboard_1_1_board}\index{board.\+Board@{board.\+Board}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a35203bbf9b43a84ecfea81eb7cbe66fd}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_ad8ae45ae3897296e325afbeb0ae8ae18}{make\+\_\+board}} (self, x, y, z)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_aefc9d1d94c291d150c7cc4f171156238}{print\+\_\+board}} (self)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a80bb62a7dcf8e358084082ff6ea730e7}{place\+\_\+bomb}} (self)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a71c3995ac93cb4f40abdb1c684b6cafd}{print\+\_\+board\+\_\+true}} (self)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a2a2634ef64e8ae39381583c459c5026d}{set\+Adj\+Bomb}} (self)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a420310ce5c8eb10a889a3e583783b9e9}{search}} (self, posx, posy)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_a2d186854c045a32d53a302e5d73d480e}{reveal\+\_\+tile}} (self, posx, posy)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_aabde992af88c3219259f21f4217b0d83}{flag\+\_\+tile}} (self, posx, posy)
+\item 
+def \mbox{\hyperlink{classboard_1_1_board_ad69981d86037be2ba3c5b8d5586d3c8e}{reveal\+\_\+all}} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classboard_1_1_board_aece806dcfd4c75f3cc8c0f5c8fd5c544}\label{classboard_1_1_board_aece806dcfd4c75f3cc8c0f5c8fd5c544}} 
+\mbox{\hyperlink{classboard_1_1_board_aece806dcfd4c75f3cc8c0f5c8fd5c544}{board}}
+\begin{DoxyCompactList}\small\item\em 2D array of Tile objects \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classboard_1_1_board_a96e3212b056035d81c4081b01be6eada}\label{classboard_1_1_board_a96e3212b056035d81c4081b01be6eada}} 
+\mbox{\hyperlink{classboard_1_1_board_a96e3212b056035d81c4081b01be6eada}{width}}
+\begin{DoxyCompactList}\small\item\em Width of board. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classboard_1_1_board_a3d1542390da10fc0a0ad7b7c10743ec2}\label{classboard_1_1_board_a3d1542390da10fc0a0ad7b7c10743ec2}} 
+\mbox{\hyperlink{classboard_1_1_board_a3d1542390da10fc0a0ad7b7c10743ec2}{length}}
+\begin{DoxyCompactList}\small\item\em Lenght of board. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classboard_1_1_board_a02ab9ac6c1ca1cc4d90de80a41238671}\label{classboard_1_1_board_a02ab9ac6c1ca1cc4d90de80a41238671}} 
+\mbox{\hyperlink{classboard_1_1_board_a02ab9ac6c1ca1cc4d90de80a41238671}{num\+\_\+bombs}}
+\begin{DoxyCompactList}\small\item\em Number of bombs in board. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classboard_1_1_board_a06330638cbfa0ae779bb1a149ad26bc4}\label{classboard_1_1_board_a06330638cbfa0ae779bb1a149ad26bc4}} 
+\mbox{\hyperlink{classboard_1_1_board_a06330638cbfa0ae779bb1a149ad26bc4}{num\+\_\+flagged}}
+\begin{DoxyCompactList}\small\item\em number of currently flagged tiles \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Board Class
+Handles creating and manipulating the logical game board\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classboard_1_1_board_a35203bbf9b43a84ecfea81eb7cbe66fd}\label{classboard_1_1_board_a35203bbf9b43a84ecfea81eb7cbe66fd}} 
+\index{board\+::\+Board@{board\+::\+Board}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def board.\+Board.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates an array of tile objects and has methods to interact with those tiles\end{DoxyVerb}
+ 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classboard_1_1_board_aabde992af88c3219259f21f4217b0d83}\label{classboard_1_1_board_aabde992af88c3219259f21f4217b0d83}} 
+\index{board\+::\+Board@{board\+::\+Board}!flag\+\_\+tile@{flag\+\_\+tile}}
+\index{flag\+\_\+tile@{flag\+\_\+tile}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{flag\+\_\+tile()}{flag\_tile()}}
+{\footnotesize\ttfamily def board.\+Board.\+flag\+\_\+tile (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{posx,  }\item[{}]{posy }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}flagging a tile
+    flagging all tiles will win game
+    num of flagged cannot exceed number of bombs\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_ad8ae45ae3897296e325afbeb0ae8ae18}\label{classboard_1_1_board_ad8ae45ae3897296e325afbeb0ae8ae18}} 
+\index{board\+::\+Board@{board\+::\+Board}!make\+\_\+board@{make\+\_\+board}}
+\index{make\+\_\+board@{make\+\_\+board}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{make\+\_\+board()}{make\_board()}}
+{\footnotesize\ttfamily def board.\+Board.\+make\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{x,  }\item[{}]{y,  }\item[{}]{z }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates an array of empty tile objects\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_a80bb62a7dcf8e358084082ff6ea730e7}\label{classboard_1_1_board_a80bb62a7dcf8e358084082ff6ea730e7}} 
+\index{board\+::\+Board@{board\+::\+Board}!place\+\_\+bomb@{place\+\_\+bomb}}
+\index{place\+\_\+bomb@{place\+\_\+bomb}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{place\+\_\+bomb()}{place\_bomb()}}
+{\footnotesize\ttfamily def board.\+Board.\+place\+\_\+bomb (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Randomly places bombs\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_aefc9d1d94c291d150c7cc4f171156238}\label{classboard_1_1_board_aefc9d1d94c291d150c7cc4f171156238}} 
+\index{board\+::\+Board@{board\+::\+Board}!print\+\_\+board@{print\+\_\+board}}
+\index{print\+\_\+board@{print\+\_\+board}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{print\+\_\+board()}{print\_board()}}
+{\footnotesize\ttfamily def board.\+Board.\+print\+\_\+board (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Prints the hidden array to terminal
+    only for debugging\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_a71c3995ac93cb4f40abdb1c684b6cafd}\label{classboard_1_1_board_a71c3995ac93cb4f40abdb1c684b6cafd}} 
+\index{board\+::\+Board@{board\+::\+Board}!print\+\_\+board\+\_\+true@{print\+\_\+board\+\_\+true}}
+\index{print\+\_\+board\+\_\+true@{print\+\_\+board\+\_\+true}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{print\+\_\+board\+\_\+true()}{print\_board\_true()}}
+{\footnotesize\ttfamily def board.\+Board.\+print\+\_\+board\+\_\+true (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Prints the true array to terminal
+only for debugging\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_ad69981d86037be2ba3c5b8d5586d3c8e}\label{classboard_1_1_board_ad69981d86037be2ba3c5b8d5586d3c8e}} 
+\index{board\+::\+Board@{board\+::\+Board}!reveal\+\_\+all@{reveal\+\_\+all}}
+\index{reveal\+\_\+all@{reveal\+\_\+all}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{reveal\+\_\+all()}{reveal\_all()}}
+{\footnotesize\ttfamily def board.\+Board.\+reveal\+\_\+all (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reveals all tiles
+    useful in end game case\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_a2d186854c045a32d53a302e5d73d480e}\label{classboard_1_1_board_a2d186854c045a32d53a302e5d73d480e}} 
+\index{board\+::\+Board@{board\+::\+Board}!reveal\+\_\+tile@{reveal\+\_\+tile}}
+\index{reveal\+\_\+tile@{reveal\+\_\+tile}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{reveal\+\_\+tile()}{reveal\_tile()}}
+{\footnotesize\ttfamily def board.\+Board.\+reveal\+\_\+tile (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{posx,  }\item[{}]{posy }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reveals a tile at a position
+    3 main cases: Tile not adjacent to a bomb, tile is adjacent to a bomb, tile is a bomb
+    if tile is not a bomb reveal tiles around it
+    if tile is adjacent to a bomb just reveal that tile
+    if tile is a bomb check_win_lose method will take care of game over state\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_a420310ce5c8eb10a889a3e583783b9e9}\label{classboard_1_1_board_a420310ce5c8eb10a889a3e583783b9e9}} 
+\index{board\+::\+Board@{board\+::\+Board}!search@{search}}
+\index{search@{search}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{search()}{search()}}
+{\footnotesize\ttfamily def board.\+Board.\+search (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{posx,  }\item[{}]{posy }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the number of adjacent bombs at a position\end{DoxyVerb}
+ \mbox{\Hypertarget{classboard_1_1_board_a2a2634ef64e8ae39381583c459c5026d}\label{classboard_1_1_board_a2a2634ef64e8ae39381583c459c5026d}} 
+\index{board\+::\+Board@{board\+::\+Board}!set\+Adj\+Bomb@{set\+Adj\+Bomb}}
+\index{set\+Adj\+Bomb@{set\+Adj\+Bomb}!board\+::\+Board@{board\+::\+Board}}
+\subsubsection{\texorpdfstring{set\+Adj\+Bomb()}{setAdjBomb()}}
+{\footnotesize\ttfamily def board.\+Board.\+set\+Adj\+Bomb (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sets in the tile object the number of adjacent bombs\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/\+Users/\+Bennett/\+Desktop/\+School/\+E\+E\+C\+S\+\_\+448/\+Project1/workspace/board.\+py\end{DoxyCompactItemize}
