@@ -43,8 +43,9 @@ while (incorrect == True):
         b = int(inputScreen.getBombNum())
         if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
+        if(incorrect == True):
+            raise ValueError()
 
-        raise ValueError()
         break;
     except ValueError:
         badCase = Tk()
