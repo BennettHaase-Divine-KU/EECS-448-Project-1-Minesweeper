@@ -23,7 +23,7 @@ for the JavaScript code in this file
 */
 var NAVTREE =
 [
-  [ "My Project", "index.html", [
+  [ "Pysweeper", "index.html", [
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ]
     ] ],

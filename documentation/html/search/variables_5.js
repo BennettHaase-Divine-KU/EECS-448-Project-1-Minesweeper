@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['num_5fbombs',['num_bombs',['../classboard_1_1_board.html#a02ab9ac6c1ca1cc4d90de80a41238671',1,'board::Board']]],
-  ['num_5fflagged',['num_flagged',['../classboard_1_1_board.html#a06330638cbfa0ae779bb1a149ad26bc4',1,'board::Board']]]
+  ['length',['length',['../classboard_1_1_board.html#a3d1542390da10fc0a0ad7b7c10743ec2',1,'board.Board.length()'],['../classexecutive_1_1executive.html#afcb8b34bb0f032c2ffae4573b9a42613',1,'executive.executive.length()']]]
 ];

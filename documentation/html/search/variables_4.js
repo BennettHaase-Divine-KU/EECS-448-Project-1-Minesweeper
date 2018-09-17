@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['length',['length',['../classboard_1_1_board.html#a3d1542390da10fc0a0ad7b7c10743ec2',1,'board.Board.length()'],['../classexecutive_1_1executive.html#afcb8b34bb0f032c2ffae4573b9a42613',1,'executive.executive.length()']]]
+  ['isbomb',['isBomb',['../classtile_1_1tile.html#a0c5e73514e10b42dfb81b4362b079f07',1,'tile::tile']]],
+  ['isflagged',['isFlagged',['../classtile_1_1tile.html#a88352aeba615f4ed0f425c7bd7ac82b8',1,'tile::tile']]],
+  ['isvisible',['isVisible',['../classtile_1_1tile.html#a9cfb7110e4d0edcee61a9243bf460dc2',1,'tile::tile']]]
 ];

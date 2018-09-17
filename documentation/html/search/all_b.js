@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['place_5fbomb',['place_bomb',['../classboard_1_1_board.html#a80bb62a7dcf8e358084082ff6ea730e7',1,'board::Board']]],
-  ['playagain',['playagain',['../classexecutive_1_1executive.html#ae9e95e04cf6a35e0857f0610c6428e80',1,'executive::executive']]],
-  ['print_5fboard',['print_board',['../classboard_1_1_board.html#aefc9d1d94c291d150c7cc4f171156238',1,'board::Board']]],
-  ['print_5fboard_5ftrue',['print_board_true',['../classboard_1_1_board.html#a71c3995ac93cb4f40abdb1c684b6cafd',1,'board::Board']]]
+  ['num_5fbombs',['num_bombs',['../classboard_1_1_board.html#a02ab9ac6c1ca1cc4d90de80a41238671',1,'board::Board']]],
+  ['num_5fflagged',['num_flagged',['../classboard_1_1_board.html#a06330638cbfa0ae779bb1a149ad26bc4',1,'board::Board']]],
+  ['numbombs',['numBombs',['../classinputgui_1_1input_gui.html#a62e0a13711c70a8850c47265683eb048',1,'inputgui::inputGui']]]
 ];

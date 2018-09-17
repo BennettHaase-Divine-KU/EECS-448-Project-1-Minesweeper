@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['search',['search',['../classboard_1_1_board.html#a420310ce5c8eb10a889a3e583783b9e9',1,'board::Board']]],
-  ['setadjbomb',['setAdjBomb',['../classboard_1_1_board.html#a2a2634ef64e8ae39381583c459c5026d',1,'board::Board']]],
-  ['setupboard',['setUpBoard',['../classexecutive_1_1executive.html#ae2161d95542ae653323bbfb9ae0ac27b',1,'executive::executive']]]
+  ['reveal_5fall',['reveal_all',['../classboard_1_1_board.html#ad69981d86037be2ba3c5b8d5586d3c8e',1,'board::Board']]],
+  ['reveal_5ftile',['reveal_tile',['../classboard_1_1_board.html#a2d186854c045a32d53a302e5d73d480e',1,'board::Board']]],
+  ['run',['run',['../classexecutive_1_1executive.html#abe92cddf119081cac6c747858df061d7',1,'executive::executive']]]
 ];
