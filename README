@@ -1,0 +1,5 @@
+Use logic and skill to demilitarize a grey grid of their mine problem in Pysweeper is the new age approach to minesweeper using python
+
+Libraries needed are Tkinter and Pygame
+
+Run gui.py to Run game

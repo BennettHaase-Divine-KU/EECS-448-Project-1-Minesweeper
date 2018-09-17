@@ -121,7 +121,6 @@ flag = pygame.image.load("flag.png")
 """Sets clock rate
 """
 clock = pygame.time.Clock()
-#exe = executive(int(h), int(w), int(b))
 exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
