@@ -53,7 +53,10 @@ while (incorrect == True):
             incorrect = False
 
     except ValueError:
-        print('Please enter a valid integer')
+        badCase = Tk()
+        Label(badCase, text="Please enter a valid integer", ).grid(row=0)
+        Button(badCase,text="Ok",command=badCase.destroy).grid(row=1)
+        badCase.mainloop()
         continue
     break
 
