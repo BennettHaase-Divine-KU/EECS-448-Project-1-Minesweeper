@@ -77,7 +77,7 @@ while (incorrect == True):
         break;
     except ValueError:
         badCase = Tk()
-        Label(badCase, text="Please enter a valid integer.\nWidth and Height bigger than 1\nNumber of bombs smaller than width*height", ).grid(row=0)
+        Label(badCase, text="Please enter a valid integer.\n1<Width<73 and 1<Height<41\nNumber of bombs smaller than width*height\nEmpty tiles <1089", ).grid(row=0)
         Button(badCase, text="Ok", command=badCase.destroy).grid(row=1)
         badCase.mainloop()
 
