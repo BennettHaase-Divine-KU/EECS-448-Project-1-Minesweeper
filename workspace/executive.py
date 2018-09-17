@@ -62,11 +62,3 @@ class executive:
         self.gameBoard.place_bomb()
         self.gameBoard.setAdjBomb()
         return
-    def playagain(self):
-        """Runs if the play wants to play again
-        """
-        restart = True
-        return restart
-    def end(self):
-        restart = False
-        return restart
