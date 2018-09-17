@@ -1,0 +1,19 @@
+https://www.pygame.org/
+
+We used pygames to draw our board and update it.
+
+https://wiki.python.org/moin/TkInter
+
+We used tkinter to get input and write quick windows to the user.
+
+http://programarcadegames.com/index.php?lang=en&chapter=array_backed_grids
+
+Tutorial used to learn more about pygame programming. English version written by Paul Craven.
+
+https://docs.python.org/3/library/tk.html
+
+Tkinter tutorial from the python documentation used to learn widgets.
+
+http://www.doxygen.nl/
+
+Doxygen used to generate our documentation.
