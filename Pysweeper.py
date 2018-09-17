@@ -36,6 +36,7 @@ def print_board():
                 screen.blit(flag,grid[j][i])
     pygame.display.flip()
 
+
 pygame.init()
 pygame.display.init()
 
@@ -64,7 +65,7 @@ incorrect = True
 while (incorrect == True):
     try:
         screen = Tk()
-        screen.iconbitmap('MemoryLeakLogo.ico')
+        screen.iconbitmap('GUI\MemoryLeakLogo.ico')
         inputScreen = inputGui(screen)
         screen.mainloop()
         w = int(inputScreen.getWidth())
@@ -97,7 +98,7 @@ screen_height = (int(h) * 20) + ((int(h)+1)*5)
 size =  screen_height, screen_width
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pysweeper")
-icon = pygame.image.load("MemoryLeakLogo.png")
+icon = pygame.image.load("GUI/MemoryLeakLogo.png")
 pygame.display.set_icon(icon)
 """create tile grid
 """
@@ -116,8 +117,8 @@ column = int(h)
 """game logic grid
 """
 grid = [[0] * row for i in range(column)]
-bomb = pygame.image.load("bomb.png")
-flag = pygame.image.load("flag.png")
+bomb = pygame.image.load("GUI/bomb.png")
+flag = pygame.image.load("GUI/flag.png")
 
 
 """Sets clock rate
@@ -155,12 +156,12 @@ if (gamestate == 2):
     exe.gameBoard.reveal_all()
     print_board()
     loseCase = Tk()
-    loseCase.iconbitmap('MemoryLeakLogo.ico')
+    loseCase.iconbitmap('GUI/MemoryLeakLogo.ico')
     Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
     loseCase.mainloop()
 elif (gamestate == 1):
     winCase = Tk()
-    winCase.iconbitmap('MemoryLeakLogo.ico')
+    winCase.iconbitmap('GUI/MemoryLeakLogo.ico')
     Label(winCase, text="YOU WIN!!", ).grid(row=0)
     winCase.mainloop()
 pygame.quit()
