@@ -41,9 +41,7 @@ b=1
 incorrect = True
 
 
-
-
-while (incorrect==True):
+while (incorrect == True):
     try:
         screen = Tk()
         inputScreen = inputGui(screen)
@@ -53,9 +51,14 @@ while (incorrect==True):
         b = int(inputScreen.getBombNum())
         if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
+
     except ValueError:
-        pass
-        print("Please input integer")
+        badCase = Tk()
+        Label(badCase, text="Please enter a valid integer", ).grid(row=0)
+        Button(badCase,text="Ok",command=badCase.destroy).grid(row=1)
+        badCase.mainloop()
+        continue
+    break
 
 
 
