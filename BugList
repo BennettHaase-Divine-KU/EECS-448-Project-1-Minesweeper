@@ -1,4 +1,0 @@
-List of known Bugs:
-->
-->if you have too many empty tiles you get a too much recursive error
-->You can bypass input limits by putting in a value than pressing enter
