@@ -7,8 +7,8 @@ from tkinter import *
 
 import pygame
 
-restart = False
-while restart == False:
+restart = True
+while restart == True:
     def print_board():
         screen.fill(DARKGREY)
         for i in range(row):
@@ -32,7 +32,7 @@ while restart == False:
                     temp = grid[j][i].move(-5, -5)
                     screen.blit(bomb, temp)
                 if exe.gameBoard.board[j][i].adjBomb >  0 and exe.gameBoard.board[j][i].isVisible == True:
-                    temp = grid[j][i].move(5, 5)
+                    temp = grid[j][i].move(5,5)
                     screen.blit(font.render(str(exe.gameBoard.board[j][i].adjBomb), True, BLACK), (temp))
                 if exe.gameBoard.board[j][i].isFlagged == True and exe.gameBoard.board[j][i].isVisible == False:
                     screen.blit(flag,grid[j][i])
@@ -68,7 +68,6 @@ while restart == False:
         try:
             screen = Tk()
             screen.iconbitmap('GUI\MemoryLeakLogo.ico')
-            screen.protocol("WM_DELETE_WINDOW",sys.exit)
             inputScreen = inputGui(screen)
             screen.mainloop()
             w = int(inputScreen.getWidth())
@@ -164,8 +163,8 @@ while restart == False:
         loseCase.mainloop()
         loopCase = Tk()
         Label(loopCase, text="Do you want to play again?").grid(row=0)
-        Button(loopCase, text="Yes", command=exe.playagain()).grid(row=1, column=0)
-        Button(loopCase, text="No", command=sys.exit).grid(row=1, column=1)
+        Button(loopCase, text="Yes", command=executive.playagain()).grid(row=1, column=0)
+        Button(loopCase, text="No", command=executive.end()).grid(row=1, column=1)
         loopCase.mainloop()
     elif (gamestate == 1):
         winCase = Tk()
