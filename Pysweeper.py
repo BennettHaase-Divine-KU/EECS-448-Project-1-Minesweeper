@@ -63,7 +63,7 @@ incorrect = True
 while (incorrect == True):
     try:
         screen = Tk()
-        #screen.iconbitmap('GUI\MemoryLeakLogo.ico')
+        screen.iconbitmap('GUI\MemoryLeakLogo.ico')
         inputScreen = inputGui(screen)
         screen.protocol("WM_DELETE_WINDOW", sys.exit)
         screen.mainloop()
