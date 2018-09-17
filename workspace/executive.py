@@ -58,5 +58,7 @@ class executive:
         self.gameBoard.place_bomb()
         self.gameBoard.setAdjBomb()
         return
-
+    def playagain(self):
+        restart = True;
+        return restart
 

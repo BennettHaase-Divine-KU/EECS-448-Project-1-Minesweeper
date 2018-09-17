@@ -33,6 +33,7 @@ class inputGui:
         return int(self.height.get())
     def getBombNum(self):
         return int(self.numBombs.get())
+
 """Example
    screen = Tk()
    inputScreen = input_gui(screen)
