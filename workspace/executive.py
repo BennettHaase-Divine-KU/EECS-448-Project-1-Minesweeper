@@ -61,4 +61,6 @@ class executive:
     def playagain(self):
         restart = True
         return restart
-
+    def end(self):
+        restart = False
+        return restart
