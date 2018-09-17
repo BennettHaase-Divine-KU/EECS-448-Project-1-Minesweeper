@@ -7,8 +7,8 @@ from tkinter import *
 
 import pygame
 
-restart = True
-while restart == True:
+restart = False
+while restart == False:
     def print_board():
         screen.fill(DARKGREY)
         for i in range(row):
@@ -68,6 +68,7 @@ while restart == True:
         try:
             screen = Tk()
             screen.iconbitmap('GUI\MemoryLeakLogo.ico')
+            screen.protocol("WM_DELETE_WINDOW",sys.exit)
             inputScreen = inputGui(screen)
             screen.mainloop()
             w = int(inputScreen.getWidth())
@@ -163,8 +164,8 @@ while restart == True:
         loseCase.mainloop()
         loopCase = Tk()
         Label(loopCase, text="Do you want to play again?").grid(row=0)
-        Button(loopCase, text="Yes", command=restart).grid(row=1, column=0)
-        Button(loopCase, text="No", command=restart is False).grid(row=1, column=1)
+        Button(loopCase, text="Yes", command=exe.playagain()).grid(row=1, column=0)
+        Button(loopCase, text="No", command=sys.exit).grid(row=1, column=1)
         loopCase.mainloop()
     elif (gamestate == 1):
         winCase = Tk()
