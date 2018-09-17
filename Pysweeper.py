@@ -8,8 +8,6 @@ from tkinter import *
 import pygame
 
 def print_board():
-    """Prints board in pygame GUI
-    """
     screen.fill(DARKGREY)
     for i in range(row):
         for j in range(column):
@@ -39,8 +37,6 @@ def print_board():
     pygame.display.flip()
 
 
-"""Start point
-"""
 pygame.init()
 pygame.display.init()
 
@@ -51,25 +47,19 @@ GREY = (211, 211, 211)
 BLACK = (0, 0, 0)
 DARKGREY = (169, 169, 169)
 
-""" tile width and height constant
-"""
+# tile width and height constant
 WIDTH = 20
 HEIGHT = 20
 
-""""margin between tiles
-"""
+# margin between tiles
 MARGIN = 5
 
-
-"""Default width, height and bomb count
-"""
 w=2
 h=2
 b=1
 incorrect = True
 
-"""Get info from user loop
-"""
+
 while (incorrect == True):
     try:
         screen = Tk()
@@ -80,7 +70,7 @@ while (incorrect == True):
         w = int(inputScreen.getWidth())
         h = int(inputScreen.getHeight())
         b = int(inputScreen.getBombNum())
-        if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
+        if (40>= w >= 2) and (72>= h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
         if(incorrect == True):
             raise ValueError()
@@ -89,7 +79,11 @@ while (incorrect == True):
     except ValueError:
         badCase = Tk()
         badCase.iconbitmap('GUI\MemoryLeakLogo.ico')
-        Label(badCase, text="Please enter a valid integer.\n1<Width<73 and 1<Height<41\nNumber of bombs smaller than width*height\nEmpty tiles <1089", ).grid(row=0)
+        required = 1
+        if ((w * h) > 1088):
+            required = (w*h) - 1088
+        Label(badCase, text="Please enter a valid integer.\n1<Width<73 and 1<Height<41\nMust "
+                            "have at least " + str(required) + " bomb(s) with that size." , ).grid(row=0)
         Button(badCase, text="Ok", command=badCase.destroy).grid(row=1)
         badCase.mainloop()
 
@@ -136,9 +130,6 @@ clock = pygame.time.Clock()
 exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
-
-"""Main game loop
-"""
 while not program_end and gamestate == 0:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -163,8 +154,7 @@ while not program_end and gamestate == 0:
     gamestate = exe.checkWinLose()
 
     clock.tick(60)
-"""Win loose conditionals
-"""
+
 if (gamestate == 2):
     exe.gameBoard.reveal_all()
     print_board()
@@ -177,5 +167,4 @@ elif (gamestate == 1):
     winCase.iconbitmap('GUI/MemoryLeakLogo.ico')
     Label(winCase, text="YOU WIN!!", ).grid(row=0)
     winCase.mainloop()
-
 pygame.quit()
