@@ -70,7 +70,7 @@ while (incorrect == True):
         w = int(inputScreen.getWidth())
         h = int(inputScreen.getHeight())
         b = int(inputScreen.getBombNum())
-        if (w >= 2) and (h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
+        if (40>= w >= 2) and (72>= h >= 2) and (b >= 1) and 1 <= ((w*h)-b) <= 1088:
             incorrect = False
         if(incorrect == True):
             raise ValueError()
