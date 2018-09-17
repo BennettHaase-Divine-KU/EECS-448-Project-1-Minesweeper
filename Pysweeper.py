@@ -8,6 +8,8 @@ from tkinter import *
 import pygame
 
 def print_board():
+    """Prints board in pygame GUI
+    """
     screen.fill(DARKGREY)
     for i in range(row):
         for j in range(column):
@@ -37,6 +39,8 @@ def print_board():
     pygame.display.flip()
 
 
+"""Start point
+"""
 pygame.init()
 pygame.display.init()
 
@@ -47,21 +51,25 @@ GREY = (211, 211, 211)
 BLACK = (0, 0, 0)
 DARKGREY = (169, 169, 169)
 
-# tile width and height constant
+""" tile width and height constant
+"""
 WIDTH = 20
 HEIGHT = 20
 
-# margin between tiles
+""""margin between tiles
+"""
 MARGIN = 5
 
 
-
+"""Default width, height and bomb count
+"""
 w=2
 h=2
 b=1
 incorrect = True
 
-
+"""Get info from user loop
+"""
 while (incorrect == True):
     try:
         screen = Tk()
@@ -128,6 +136,9 @@ clock = pygame.time.Clock()
 exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
+
+"""Main game loop
+"""
 while not program_end and gamestate == 0:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -152,7 +163,8 @@ while not program_end and gamestate == 0:
     gamestate = exe.checkWinLose()
 
     clock.tick(60)
-
+"""Win loose conditionals
+"""
 if (gamestate == 2):
     exe.gameBoard.reveal_all()
     print_board()
@@ -165,4 +177,5 @@ elif (gamestate == 1):
     winCase.iconbitmap('GUI/MemoryLeakLogo.ico')
     Label(winCase, text="YOU WIN!!", ).grid(row=0)
     winCase.mainloop()
+
 pygame.quit()
