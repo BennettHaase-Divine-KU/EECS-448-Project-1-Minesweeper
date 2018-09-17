@@ -129,6 +129,8 @@ clock = pygame.time.Clock()
 exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
+"""Main game loop
+"""
 while not program_end and gamestate == 0:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
