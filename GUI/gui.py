@@ -64,6 +64,7 @@ incorrect = True
 while (incorrect == True):
     try:
         screen = Tk()
+        screen.iconbitmap('MemoryLeakLogo.ico')
         inputScreen = inputGui(screen)
         screen.mainloop()
         w = int(inputScreen.getWidth())
@@ -77,6 +78,7 @@ while (incorrect == True):
         break;
     except ValueError:
         badCase = Tk()
+        badCase.iconbitmap('MemoryLeakLogo.ico')
         Label(badCase, text="Please enter a valid integer.\nWidth and Height bigger than 1\nNumber of bombs smaller than width*height", ).grid(row=0)
         Button(badCase, text="Ok", command=badCase.destroy).grid(row=1)
         badCase.mainloop()
@@ -155,11 +157,13 @@ if (gamestate == 2):
     exe.gameBoard.reveal_all()
     print_board()
     loseCase = Tk()
+    loseCase.iconbitmap('MemoryLeakLogo.ico')
     Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
     loseCase.mainloop()
     print("YOU LOSE")
 elif (gamestate == 1):
     winCase = Tk()
+    winCase.iconbitmap('MemoryLeakLogo.ico')
     Label(winCase, text="YOU WIN!!", ).grid(row=0)
     winCase.mainloop()
     print("YOU WIN")
