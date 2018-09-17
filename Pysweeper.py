@@ -63,7 +63,7 @@ incorrect = True
 while (incorrect == True):
     try:
         screen = Tk()
-        screen.iconbitmap('GUI\MemoryLeakLogo.ico')
+        screen.iconbitmap(r'GUI\MemoryLeakLogo.ico')
         inputScreen = inputGui(screen)
         screen.protocol("WM_DELETE_WINDOW", sys.exit)
         screen.mainloop()
@@ -74,7 +74,6 @@ while (incorrect == True):
             incorrect = False
         if(incorrect == True):
             raise ValueError()
-
         break;
     except ValueError:
         badCase = Tk()
