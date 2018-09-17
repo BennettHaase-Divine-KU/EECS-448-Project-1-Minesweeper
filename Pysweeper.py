@@ -163,8 +163,8 @@ while restart == True:
         loseCase.mainloop()
         loopCase = Tk()
         Label(loopCase, text="Do you want to play again?").grid(row=0)
-        Button(loopCase, text="Yes", command=restart).grid(row=1, column=0)
-        Button(loopCase, text="No", command=restart is False).grid(row=1, column=1)
+        Button(loopCase, text="Yes", command=executive.playagain()).grid(row=1, column=0)
+        Button(loopCase, text="No", command=executive.end()).grid(row=1, column=1)
         loopCase.mainloop()
     elif (gamestate == 1):
         winCase = Tk()
