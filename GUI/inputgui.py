@@ -13,7 +13,7 @@ class inputGui:
         self.width = StringVar()
         self.height = StringVar()
         self.numBombs =  StringVar()
-        Label(master, text="Max Height: 40 Max Width: 72").grid(row=0, column=1)
+        Label(master, text="Max Values (Height: 40, Width: 72, Empty Tiles: 1088)").grid(row=0, column=1)
         Label(master, text="Height:", ).grid(row=1)
         Label(master, text="Width:").grid(row=2)
         Label(master, text="Number of bombs:").grid(row=3)

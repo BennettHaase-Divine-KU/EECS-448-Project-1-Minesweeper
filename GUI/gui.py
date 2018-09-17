@@ -123,7 +123,6 @@ flag = pygame.image.load("flag.png")
 """Sets clock rate
 """
 clock = pygame.time.Clock()
-#exe = executive(int(h), int(w), int(b))
 exe = executive(int(w), int(h), int(b))
 exe.run()
 gamestate = 0
@@ -140,7 +139,6 @@ while not program_end and gamestate == 0:
                     c = column - 1
                 if(r >= row):
                     r = row - 1
-                print(c, r)
                 exe.gameBoard.reveal_tile(c,r)
 
             elif(event.button == 3):
@@ -160,11 +158,9 @@ if (gamestate == 2):
     loseCase.iconbitmap('MemoryLeakLogo.ico')
     Label(loseCase, text="YOU LOSE!!", ).grid(row=0)
     loseCase.mainloop()
-    print("YOU LOSE")
 elif (gamestate == 1):
     winCase = Tk()
     winCase.iconbitmap('MemoryLeakLogo.ico')
     Label(winCase, text="YOU WIN!!", ).grid(row=0)
     winCase.mainloop()
-    print("YOU WIN")
 pygame.quit()
