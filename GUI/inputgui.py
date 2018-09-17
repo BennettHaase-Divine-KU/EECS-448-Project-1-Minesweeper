@@ -28,10 +28,16 @@ class inputGui:
         Button(master, text = 'Enter', command=master.destroy).grid(row = 4, column = 1, pady = 4)
 
     def getWidth(self):
+        """Returns Width from user
+        """
         return int(self.width.get())
     def getHeight(self):
+        """Returns Height from user
+        """
         return int(self.height.get())
     def getBombNum(self):
+        """Returns Bombs from user
+        """
         return int(self.numBombs.get())
 
 """Example

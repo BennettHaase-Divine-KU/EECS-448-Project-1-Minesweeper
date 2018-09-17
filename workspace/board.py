@@ -1,22 +1,32 @@
 """@package docstring
- Board class
+ Board file
 
 """
 import random
 from workspace.tile import tile
 class Board:
-    """ Creates an array of tile objects and has methods to interact with those tiles
-    """
+    """Board Class
+    Handles creating and manipulating the logical game board"""
+
     def __init__(self):
+        """ Creates an array of tile objects and has methods to interact with those tiles
+           """
+
+        ##2D array of Tile objects
         self.board = []
 
-    """Creates an array of empty tile objects
-    """
+
     def make_board(self, x, y, z):  # c = x (width) d = y (height) e = z (num bombs)
-        # Declaration of board and adding row/columns
+        """Creates an array of empty tile objects
+            """
+
+        ##Width of board
         self.width=x
+        ##Lenght of board
         self.length=y
+        ##Number of bombs in board
         self.num_bombs=z
+        ##number of currently flagged tiles
         self.num_flagged=0
 
         for j in range(self.width):
@@ -26,10 +36,10 @@ class Board:
             self.board.append(column)
 
         return
-    """Prints the hidden array to terminal
-    only for debugging
-    """
     def print_board(self):
+        """Prints the hidden array to terminal
+            only for debugging
+            """
         cols = len(self.board)
         rows = 0
         if cols:
@@ -46,9 +56,10 @@ class Board:
         print()
         return self.board
 
-    """ Randomly places bombs
-    """
+
     def place_bomb(self):
+        """ Randomly places bombs
+            """
         n=0
         while n<self.num_bombs:
             e = random.randint(0, self.width-1)
@@ -61,10 +72,11 @@ class Board:
         return self.board
 
 
-    """Prints the true array to terminal
-        only for debugging
-    """
+
     def print_board_true(self):
+        """Prints the true array to terminal
+                only for debugging
+            """
         cols = len(self.board)
         rows = 0
         if cols:
@@ -78,9 +90,10 @@ class Board:
             print()
         print()
         return self.board
-    """Sets in the tile object the number of adjacent bombs
-    """
+
     def setAdjBomb(self):
+        """Sets in the tile object the number of adjacent bombs
+            """
         cols = len(self.board)
         rows = 0
         if cols:
@@ -89,9 +102,10 @@ class Board:
             for i in range(cols):
                 self.board[i][j].adjBomb=self.search(i,j)
 
-    """Returns the number of adjacent bombs at a position
-    """
+
     def search(self, posx, posy):
+        """Returns the number of adjacent bombs at a position
+            """
         count=0
 
         if 0 <= posx-1 < self.width and 0 <= posy < self.length:  # make sure is not out of bound
@@ -127,13 +141,14 @@ class Board:
                 count += 1
         return count
 
-    """Reveals a tile at a position
-    3 main cases: Tile not adjacent to a bomb, tile is adjacent to a bomb, tile is a bomb
-    if tile is not a bomb reveal tiles around it
-    if tile is adjacent to a bomb just reveal that tile
-    if tile is a bomb check_win_lose method will take care of game over state
-    """
+
     def reveal_tile(self, posx, posy):
+        """Reveals a tile at a position
+            3 main cases: Tile not adjacent to a bomb, tile is adjacent to a bomb, tile is a bomb
+            if tile is not a bomb reveal tiles around it
+            if tile is adjacent to a bomb just reveal that tile
+            if tile is a bomb check_win_lose method will take care of game over state
+            """
         if self.board[posx][posy].adjBomb == 0 and self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlagged==False:  # if the tile you reveal has 0 bomb adjacentand is unrevealed,you can reveal
             if 0 <= posx-1 < self.width and 0 <= posy < self.length:  # make sure is in the bound
                 self.board[posx][posy].isVisible = True
@@ -170,11 +185,12 @@ class Board:
         elif(self.board[posx][posy].isVisible==False and self.board[posx][posy].isFlagged==False): #If tile is not revealded but has adjacent bombs just reveal tile
             self.board[posx][posy].isVisible = True
 
-    """flagging a tile
-    flagging all tiles will win game
-    num of flagged cannot exceed number of bombs
-    """
+
     def flag_tile(self, posx, posy):
+        """flagging a tile
+            flagging all tiles will win game
+            num of flagged cannot exceed number of bombs
+            """
         if(self.num_flagged<self.num_bombs and self.board[posx][posy].isFlagged == False):
             self.board[posx][posy].isFlagged= True
             self.num_flagged=self.num_flagged+1
@@ -182,9 +198,11 @@ class Board:
             self.board[posx][posy].isFlagged = False
             self.num_flagged = self.num_flagged - 1
 
-    """Reveals all tiles
-    useful in end game case"""
+
     def reveal_all(self):
+        """Reveals all tiles
+            useful in end game case
+            """
         cols = len(self.board)
         rows = 0
         if cols:

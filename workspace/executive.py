@@ -13,12 +13,16 @@ class executive:
         """Constructor
         Initialises inter variables
         """
+        ##Board Object
         self.gameBoard=Board()
+        ##Length of board
         self.length=length
+        ##Width of board
         self.width=width
+        ##How many Bombs there are in game
         self.bombCnt=bombCnt
-    """To check continue the game or not
-    """
+
+
     def checkWinLose(self):
         """Checks game logic for a win or lose
         0->Unresolved
@@ -41,15 +45,15 @@ class executive:
             return 1
         else:
             return 0
-    """To call the make_board method
-    """
+
+
     def setUpBoard(self):
         """Creates the board
         """
         self.gameBoard.make_board(self.width, self.length, self.bombCnt)
         return
-    """To set up the initial board for minesweeper
-    """
+
+
     def run(self):
         """Run method
         Initializes the board, places bombs
@@ -59,6 +63,8 @@ class executive:
         self.gameBoard.setAdjBomb()
         return
     def playagain(self):
+        """Runs if the play wants to play again
+        """
         restart = True
         return restart
     def end(self):
