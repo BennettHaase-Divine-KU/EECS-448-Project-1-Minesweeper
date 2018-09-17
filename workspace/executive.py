@@ -57,7 +57,6 @@ class executive:
         self.setUpBoard()
         self.gameBoard.place_bomb()
         self.gameBoard.setAdjBomb()
-        self.gameBoard.print_board_true()
         return
 
 
